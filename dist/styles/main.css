@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #A6D9C6;
+  color: #333;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  height: 100vh;
+}
+
+p {
+  color: white;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-width: 100px;
+}
+
+/*# sourceMappingURL=main.css.map */
