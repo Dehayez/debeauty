@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: $primary-color;
+    color: #333;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+}
+
+p {
+    color: white;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+}

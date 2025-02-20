@@ -1,2 +1,1 @@
-# d-beauty
-# debeauty
+# Débeauty
