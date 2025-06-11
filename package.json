@@ -7,7 +7,7 @@
     "serve": "browser-sync start --server --files 'styles/*.css, scripts/*.js, index.html' --port 3001",
     "watch:sass": "nodemon --watch styles --ext scss --exec 'sass styles/main.scss styles/main.css'",
     "build:css": "sass styles/main.scss dist/styles/main.css",
-    "build:copy": "mkdir -p dist/scripts dist/assets && cp -r assets dist/assets && cp index.html dist/index.html && cp scripts/main.js dist/scripts/main.js && cp styles/main.css dist/styles/main.css",
+    "build:copy": "mkdir -p dist/scripts dist/assets && cp -r assets/* dist/assets && cp index.html dist/index.html && cp scripts/main.js dist/scripts/main.js && cp styles/main.css dist/styles/main.css",
     "build": "yarn build:css && yarn build:copy"
   },
   "dependencies": {
