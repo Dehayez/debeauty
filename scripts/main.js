@@ -10,8 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     cursorCircle.className = 'cursor-circle';
     document.body.appendChild(cursorCircle);
 
+    // Get last known cursor position from sessionStorage or use center
+    const lastX = sessionStorage.getItem('lastCursorX') || window.innerWidth / 2;
+    const lastY = sessionStorage.getItem('lastCursorY') || window.innerHeight / 2;
+
     // Update custom cursor position
     document.addEventListener('mousemove', (e) => {
+        // Store current position in sessionStorage
+        sessionStorage.setItem('lastCursorX', e.clientX);
+        sessionStorage.setItem('lastCursorY', e.clientY);
+        
         customCursor.style.left = e.clientX + 'px';
         customCursor.style.top = e.clientY + 'px';
         
@@ -135,18 +143,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(connector2);
 
     const RADIUS = 19.5; // 39px diameter
-    let pos1 = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    let pos2 = { ...pos1 };
-    let pos3 = { ...pos1 };
+    
+    // Initialize trail positions at last known cursor position
+    let pos1 = { x: parseInt(lastX), y: parseInt(lastY) };
+    let pos2 = { x: parseInt(lastX), y: parseInt(lastY) };
+    let pos3 = { x: parseInt(lastX), y: parseInt(lastY) };
 
     // Track actual cursor position separately from the first dot
-    let actualMousePos = { x: pos1.x, y: pos1.y };
+    let actualMousePos = { x: parseInt(lastX), y: parseInt(lastY) };
 
     // Create an array to store the last few mouse positions for smoother movement
     const mousePositions = [];
     const positionHistoryLength = 5;
     for (let i = 0; i < positionHistoryLength; i++) {
-        mousePositions.push({ x: pos1.x, y: pos1.y });
+        mousePositions.push({ x: parseInt(lastX), y: parseInt(lastY) });
     }
 
     document.addEventListener('mousemove', (e) => {
