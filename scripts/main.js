@@ -62,30 +62,81 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Cursor trail effect
-    const createTrail = () => {
-        const trail = document.createElement('div');
-        trail.className = 'cursor-trail';
-        document.body.appendChild(trail);
-        return trail;
-    };
+    // Three-dot worm trail with solid connectors
+    const dot1 = document.createElement('div');
+    dot1.className = 'cursor-worm__dot';
+    document.body.appendChild(dot1);
 
-    // Create multiple trail elements
-    const trails = [];
-    for (let i = 0; i < 3; i++) {
-        trails.push(createTrail());
+    const dot2 = document.createElement('div');
+    dot2.className = 'cursor-worm__dot';
+    document.body.appendChild(dot2);
+
+    const dot3 = document.createElement('div');
+    dot3.className = 'cursor-worm__dot';
+    document.body.appendChild(dot3);
+
+    const connector1 = document.createElement('div');
+    connector1.className = 'cursor-worm__connector';
+    document.body.appendChild(connector1);
+
+    const connector2 = document.createElement('div');
+    connector2.className = 'cursor-worm__connector';
+    document.body.appendChild(connector2);
+
+    const RADIUS = 15; // 30px diameter
+    let pos1 = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let pos2 = { ...pos1 };
+    let pos3 = { ...pos1 };
+
+    document.addEventListener('mousemove', (e) => {
+        pos1.x = e.clientX;
+        pos1.y = e.clientY;
+    });
+
+    function animate() {
+        // Each dot follows the previous with lag
+        pos2.x += (pos1.x - pos2.x) * 0.18;
+        pos2.y += (pos1.y - pos2.y) * 0.18;
+        pos3.x += (pos2.x - pos3.x) * 0.18;
+        pos3.y += (pos2.y - pos3.y) * 0.18;
+
+        // Position dots
+        gsap.set(dot1, { x: pos1.x - RADIUS, y: pos1.y - RADIUS });
+        gsap.set(dot2, { x: pos2.x - RADIUS, y: pos2.y - RADIUS });
+        gsap.set(dot3, { x: pos3.x - RADIUS, y: pos3.y - RADIUS });
+
+        // Connector 1: between dot1 and dot2
+        connectDots(dot1, dot2, connector1);
+        // Connector 2: between dot2 and dot3
+        connectDots(dot2, dot3, connector2);
+
+        requestAnimationFrame(animate);
     }
 
-    // Follow mouse with GSAP
-    document.addEventListener('mousemove', (e) => {
-        trails.forEach((trail, index) => {
-            gsap.to(trail, {
-                duration: 0.3 + (index * 0.1),
-                x: e.clientX - 10,
-                y: e.clientY - 10,
-                ease: "power2.out",
-                delay: index * 0.05
-            });
+    function connectDots(dotA, dotB, connector) {
+        // Get center positions
+        const a = dotA.getBoundingClientRect();
+        const b = dotB.getBoundingClientRect();
+        const ax = a.left + RADIUS;
+        const ay = a.top + RADIUS;
+        const bx = b.left + RADIUS;
+        const by = b.top + RADIUS;
+        const dx = bx - ax;
+        const dy = by - ay;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        const connectorWidth = distance + RADIUS * 2;
+        const midX = (ax + bx) / 2 - connectorWidth / 2;
+        const midY = (ay + by) / 2 - RADIUS;
+        gsap.set(connector, {
+            x: midX,
+            y: midY,
+            width: connectorWidth,
+            height: RADIUS * 2,
+            borderRadius: RADIUS,
+            rotate: angle,
         });
-    });
+    }
+
+    animate();
 });

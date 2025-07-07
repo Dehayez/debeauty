@@ -170,3 +170,23 @@ footer {
     transition: opacity 0.3s ease;
     will-change: transform, width, height, border-radius, rotate;
 }
+
+.cursor-worm__dot {
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-worm__connector {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    background: #fff;
+    transition: opacity 0.3s ease;
+    will-change: transform, width, height, border-radius, rotate;
+}
