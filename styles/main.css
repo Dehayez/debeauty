@@ -13,6 +13,45 @@ body {
   background-color: #A6D9C6;
   position: relative;
   z-index: 1;
+  cursor: none; /* Hide default cursor */
+}
+
+/* Custom cursor styling */
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+.cursor-circle {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s, width 0.2s, height 0.2s;
+}
+
+/* Style for links to change cursor appearance */
+a {
+  cursor: none;
+}
+a:hover ~ .custom-cursor {
+  width: 6px;
+  height: 6px;
+}
+a:hover ~ .cursor-circle {
+  opacity: 1;
 }
 
 header {

@@ -1,6 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('JavaScript is working!');
 
+    // Create custom cursor elements
+    const customCursor = document.createElement('div');
+    customCursor.className = 'custom-cursor';
+    document.body.appendChild(customCursor);
+
+    const cursorCircle = document.createElement('div');
+    cursorCircle.className = 'cursor-circle';
+    document.body.appendChild(cursorCircle);
+
+    // Update custom cursor position
+    document.addEventListener('mousemove', (e) => {
+        customCursor.style.left = e.clientX + 'px';
+        customCursor.style.top = e.clientY + 'px';
+        
+        cursorCircle.style.left = e.clientX + 'px';
+        cursorCircle.style.top = e.clientY + 'px';
+    });
+
+    // Change cursor appearance when hovering over links
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            customCursor.style.width = '6px';
+            customCursor.style.height = '6px';
+            cursorCircle.style.opacity = '1';
+        });
+        
+        link.addEventListener('mouseleave', () => {
+            customCursor.style.width = '10px';
+            customCursor.style.height = '10px';
+            cursorCircle.style.opacity = '0';
+        });
+    });
+
     // Animate overlay logo to navbar center, then fade in content
     const overlay = document.getElementById('overlay');
     const overlayLogo = document.getElementById('overlay__logo');
