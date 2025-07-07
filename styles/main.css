@@ -118,4 +118,50 @@ footer {
   display: none !important;
 }
 
+.cursor-trail {
+  width: 20px;
+  height: 20px;
+  background: rgba(166, 217, 198, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-trail:nth-child(2) {
+  width: 15px;
+  height: 15px;
+  background: rgba(166, 217, 198, 0.3);
+}
+
+.cursor-trail:nth-child(3) {
+  width: 10px;
+  height: 10px;
+  background: rgba(166, 217, 198, 0.2);
+}
+
+.cursor-trail__head, .cursor-trail__tail {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: normal;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-trail__connector {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  background: #fff;
+  mix-blend-mode: normal;
+  transition: opacity 0.3s ease;
+  will-change: transform, width, height, border-radius, rotate;
+}
+
 /*# sourceMappingURL=main.css.map */

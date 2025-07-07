@@ -5,3 +5,6 @@ alwaysApply: true
 - Avoid asyncronious functions
 - Break down componenets into smaller parts
 - Keep everything minimal
+- Always auto fix and apply code
+- Always use the scss methods for example using &
+- always use other files as reference for when i change names or something else

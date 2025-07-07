@@ -54,10 +54,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     navbarLogo.replaceWith(overlayLogo);
                     overlayLogo.id = 'navbar__logo';
                     overlayLogo.className = 'navbar__logo';
+                    overlayLogo.removeAttribute('style');
                     overlay.remove();
                 }, 900);
                 sessionStorage.setItem('logoAnimationPlayed', 'true');
             }, 200);
         }
     }
+
+    // Cursor trail effect
+    const createTrail = () => {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        document.body.appendChild(trail);
+        return trail;
+    };
+
+    // Create multiple trail elements
+    const trails = [];
+    for (let i = 0; i < 3; i++) {
+        trails.push(createTrail());
+    }
+
+    // Follow mouse with GSAP
+    document.addEventListener('mousemove', (e) => {
+        trails.forEach((trail, index) => {
+            gsap.to(trail, {
+                duration: 0.3 + (index * 0.1),
+                x: e.clientX - 10,
+                y: e.clientY - 10,
+                ease: "power2.out",
+                delay: index * 0.05
+            });
+        });
+    });
 });
