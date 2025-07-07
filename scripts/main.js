@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animate overlay logo to navbar center, then fade in content
     const overlay = document.getElementById('overlay');
-    const overlayLogo = document.getElementById('overlay-logo');
-    const navbarLogo = document.getElementById('navbar-logo');
+    const overlayLogo = document.getElementById('overlay__logo');
+    const navbarLogo = document.getElementById('navbar__logo');
     const header = document.querySelector('header');
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     overlayLogo.style.transform = '';
                     overlayLogo.style.transition = '';
                     navbarLogo.replaceWith(overlayLogo);
-                    overlayLogo.id = 'navbar-logo';
-                    overlayLogo.className = 'navbar-logo';
+                    overlayLogo.id = 'navbar__logo';
+                    overlayLogo.className = 'navbar__logo';
                     overlay.remove();
                 }, 900);
                 sessionStorage.setItem('logoAnimationPlayed', 'true');
