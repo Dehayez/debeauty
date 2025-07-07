@@ -11,6 +11,9 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #A6D9C6;
+  color: #12130F;
+  font-family: "Josefin Sans", Arial, sans-serif;
+  font-weight: 300;
   position: relative;
   z-index: 1;
   cursor: none; /* Hide default cursor */

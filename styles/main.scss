@@ -15,6 +15,9 @@ body {
     display: flex;
     flex-direction: column;
     background-color: $primary-color;
+    color: $black-color;
+    font-family: $font-family;
+    font-weight: 300;
     position: relative;
     z-index: 1;
     cursor: none; /* Hide default cursor */
