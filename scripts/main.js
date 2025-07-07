@@ -83,22 +83,53 @@ document.addEventListener('DOMContentLoaded', () => {
     connector2.className = 'cursor-worm__connector';
     document.body.appendChild(connector2);
 
-    const RADIUS = 19.5; // 39px diameter (1.3x bigger)
+    const RADIUS = 19.5; // 39px diameter
     let pos1 = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     let pos2 = { ...pos1 };
     let pos3 = { ...pos1 };
 
+    // Track actual cursor position separately from the first dot
+    let actualMousePos = { x: pos1.x, y: pos1.y };
+
+    // Create an array to store the last few mouse positions for smoother movement
+    const mousePositions = [];
+    const positionHistoryLength = 5;
+    for (let i = 0; i < positionHistoryLength; i++) {
+        mousePositions.push({ x: pos1.x, y: pos1.y });
+    }
+
     document.addEventListener('mousemove', (e) => {
-        pos1.x = e.clientX;
-        pos1.y = e.clientY;
+        // Store the actual cursor position
+        actualMousePos.x = e.clientX;
+        actualMousePos.y = e.clientY;
+        
+        // Add new position to the beginning of the array
+        mousePositions.unshift({ x: e.clientX, y: e.clientY });
+        // Remove the oldest position
+        if (mousePositions.length > positionHistoryLength) {
+            mousePositions.pop();
+        }
     });
 
     function animate() {
-        // Each dot follows the previous with lag
-        pos2.x += (pos1.x - pos2.x) * 0.18;
-        pos2.y += (pos1.y - pos2.y) * 0.18;
-        pos3.x += (pos2.x - pos3.x) * 0.18;
-        pos3.y += (pos2.y - pos3.y) * 0.18;
+        // Make the first dot follow the actual cursor very slowly
+        pos1.x += (actualMousePos.x - pos1.x) * 0.07;
+        pos1.y += (actualMousePos.y - pos1.y) * 0.07;
+        
+        // Slower follow for the second dot
+        pos2.x += (pos1.x - pos2.x) * 0.15;
+        pos2.y += (pos1.y - pos2.y) * 0.15;
+        
+        // Even slower for the third dot, but with acceleration at the end
+        const distanceX = pos2.x - pos3.x;
+        const distanceY = pos2.y - pos3.y;
+        const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        
+        // Acceleration factor: increases as distance grows
+        const accelerationFactor = Math.min(0.35, 0.1 + (distance / 450));
+        
+        pos3.x += distanceX * accelerationFactor;
+        pos3.y += distanceY * accelerationFactor;
 
         // Position dots
         gsap.set(dot1, { x: pos1.x - RADIUS, y: pos1.y - RADIUS });
