@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     connector2.className = 'cursor-worm__connector';
     document.body.appendChild(connector2);
 
-    const RADIUS = 15; // 30px diameter
+    const RADIUS = 19.5; // 39px diameter (1.3x bigger)
     let pos1 = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     let pos2 = { ...pos1 };
     let pos3 = { ...pos1 };

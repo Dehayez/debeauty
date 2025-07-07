@@ -165,16 +165,16 @@ footer {
     position: fixed;
     pointer-events: none;
     z-index: 9998;
-    background: #fff;
+    background: $primary-color-dark;
     mix-blend-mode: normal;
     transition: opacity 0.3s ease;
     will-change: transform, width, height, border-radius, rotate;
 }
 
 .cursor-worm__dot {
-    width: 30px;
-    height: 30px;
-    background: #fff;
+    width: 39px;
+    height: 39px;
+    background: $primary-color-dark;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
@@ -186,7 +186,7 @@ footer {
     position: fixed;
     pointer-events: none;
     z-index: 9998;
-    background: #fff;
+    background: $primary-color-dark;
     transition: opacity 0.3s ease;
     will-change: transform, width, height, border-radius, rotate;
 }
