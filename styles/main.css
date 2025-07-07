@@ -16,44 +16,6 @@ body {
   cursor: none; /* Hide default cursor */
 }
 
-/* Custom cursor styling */
-.custom-cursor {
-  width: 10px;
-  height: 10px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-}
-
-.cursor-circle {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ffffff;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.2s, width 0.2s, height 0.2s;
-}
-
-/* Style for links to change cursor appearance */
-a {
-  cursor: none;
-}
-a:hover ~ .custom-cursor {
-  width: 6px;
-  height: 6px;
-}
-a:hover ~ .cursor-circle {
-  opacity: 1;
-}
-
 header {
   width: 100%;
   position: relative;
@@ -117,7 +79,7 @@ footer {
 }
 .navbar__links li a {
   text-decoration: none;
-  color: #ffffff;
+  color: #FFFFFF;
   font-size: 1.4rem;
   transition: transform 0.3s;
   display: inline-block;
@@ -171,10 +133,49 @@ footer {
   display: none !important;
 }
 
+/* Custom cursor styling */
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+.cursor-circle {
+  width: 10px;
+  height: 10px;
+  border: 1.7px solid #5B9279;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s;
+}
+
+a {
+  cursor: none;
+}
+a:hover ~ .custom-cursor {
+  width: 6px;
+  height: 6px;
+}
+a:hover ~ .cursor-circle {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+}
+
 .cursor-trail {
   width: 20px;
   height: 20px;
-  background: rgba(166, 217, 198, 0.4);
+  background: #9BD4BF;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -186,13 +187,13 @@ footer {
 .cursor-trail:nth-child(2) {
   width: 15px;
   height: 15px;
-  background: rgba(166, 217, 198, 0.3);
+  background: #9BD4BF;
 }
 
 .cursor-trail:nth-child(3) {
   width: 10px;
   height: 10px;
-  background: rgba(166, 217, 198, 0.2);
+  background: #9BD4BF;
 }
 
 .cursor-trail__head, .cursor-trail__tail {
@@ -211,7 +212,7 @@ footer {
   position: fixed;
   pointer-events: none;
   z-index: -2;
-  background: #95C7B1;
+  background: #9BD4BF;
   mix-blend-mode: normal;
   transition: opacity 0.3s ease;
   will-change: transform, width, height, border-radius, rotate;
@@ -220,7 +221,7 @@ footer {
 .cursor-worm__dot {
   width: 39px;
   height: 39px;
-  background: #95C7B1;
+  background: #9BD4BF;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -232,7 +233,7 @@ footer {
   position: fixed;
   pointer-events: none;
   z-index: -2;
-  background: #95C7B1;
+  background: #9BD4BF;
   transition: opacity 0.3s ease;
   will-change: transform, width, height, border-radius, rotate;
 }

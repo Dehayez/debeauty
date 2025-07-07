@@ -25,12 +25,29 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('mouseenter', () => {
             customCursor.style.width = '6px';
             customCursor.style.height = '6px';
+            
+            // Reset the circle size first to ensure animation plays correctly
+            cursorCircle.style.transition = 'none';
+            cursorCircle.style.width = '10px';
+            cursorCircle.style.height = '10px';
+            
+            // Force reflow to ensure the reset takes effect
+            void cursorCircle.offsetWidth;
+            
+            // Restore transition and animate to larger size
+            cursorCircle.style.transition = 'width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s';
+            cursorCircle.style.width = '30px';
+            cursorCircle.style.height = '30px';
             cursorCircle.style.opacity = '1';
         });
         
         link.addEventListener('mouseleave', () => {
             customCursor.style.width = '10px';
             customCursor.style.height = '10px';
+            
+            // Animate back to small size before hiding
+            cursorCircle.style.width = '10px';
+            cursorCircle.style.height = '10px';
             cursorCircle.style.opacity = '0';
         });
     });
