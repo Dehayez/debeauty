@@ -34,7 +34,39 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <img class="image" src="/assets/logo.png" alt="débeauty">
+    <div id="overlay" class="overlay">
+        <img id="overlay-logo" class="overlay-logo" src="/assets/logo.png" alt="débeauty">
+    </div>
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-links navbar-links-left">
+                <li><a href="#home">Home</a></li>
+            </ul>
+            <div class="navbar-logo-container">
+                <img id="navbar-logo" class="navbar-logo" src="/assets/logo.png" alt="débeauty">
+            </div>
+            <ul class="navbar-links navbar-links-right">
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main style="opacity:0; pointer-events:none;">
+        <section id="services">
+            <h2>Diensten</h2>
+            <p>Onze schoonheidsbehandelingen voor jou.</p>
+        </section>
+        <section id="about">
+            <h2>Over Débeauty</h2>
+            <p>Dé plek voor verzorging en ontspanning in Baasrode.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Adres: Bookmolenstraat 124, 9200 Baasrode<br>Telefoon: 0479698709</p>
+        </section>
+    </main>
+    <footer style="opacity:0; pointer-events:none;">
+        <p>&copy; 2024 Débeauty. Alle rechten voorbehouden.</p>
+    </footer>
     <script src="scripts/main.js"></script>
 </body>
 </html>
