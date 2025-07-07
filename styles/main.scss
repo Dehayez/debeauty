@@ -10,12 +10,11 @@
 }
 
 body {
-    font-family: $font-family-primary;
-    background-color: $primary-color;
     margin: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: $primary-color;
 }
 
 header {
@@ -23,8 +22,7 @@ header {
 }
 
 .navbar {
-    padding: 1rem 2rem;
-    background: $primary-color;
+    padding: 1rem 6rem;
 }
 
 .navbar-links {
@@ -33,6 +31,7 @@ header {
     justify-content: space-between;
     list-style: none;
     padding: 0;
+    font-family: $font-family-title;
 }
 
 .navbar-logo-container {
@@ -53,6 +52,14 @@ header {
 
 .navbar-links li a {
     text-decoration: none;
+    color: $white-color;
+    font-size: 1.4rem;
+    transition: transform 0.3s;
+    display: inline-block;
+
+    &:hover {
+        transform: scale(1.07);
+    }
 }
 
 .logo-center-container {
@@ -85,21 +92,13 @@ section {
 }
 
 footer {
-    background: #333;
-    color: #fff;
     text-align: center;
     padding: 1.5rem 0 1rem 0;
     font-size: 1rem;
     letter-spacing: 0.05em;
     flex-shrink: 0;
     width: 100%;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
 }
-
-p {
-    color: white;
-}
-
 
 .overlay {
     position: fixed;

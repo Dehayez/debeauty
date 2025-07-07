@@ -1,0 +1,7 @@
+---
+alwaysApply: true
+---
+- Always use BEM structure in css or scss and html
+- Avoid asyncronious functions
+- Break down componenets into smaller parts
+- Keep everything minimal
