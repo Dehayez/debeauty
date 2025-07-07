@@ -58,6 +58,7 @@ header {
   max-width: 80px;
   max-height: 60px;
   transition: opacity 0.3s;
+  display: block;
 }
 
 .navbar-links li a {
