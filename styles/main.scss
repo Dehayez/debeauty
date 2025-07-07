@@ -15,10 +15,14 @@ body {
     display: flex;
     flex-direction: column;
     background-color: $primary-color;
+    position: relative;
+    z-index: 1;
 }
 
 header {
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 main {
@@ -28,10 +32,14 @@ main {
     margin: 0 auto;
     padding: 2rem 1rem 4rem 1rem;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
 }
 
 section {
     margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 footer {
@@ -41,10 +49,14 @@ footer {
     letter-spacing: 0.05em;
     flex-shrink: 0;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .navbar {
     padding: 1rem 6rem;
+    position: relative;
+    z-index: 2;
 
     &__links {
         display: flex;
@@ -90,6 +102,8 @@ footer {
     align-items: center;
     height: 60vh;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .logo-center {
@@ -132,7 +146,7 @@ footer {
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
-    z-index: 9999;
+    z-index: -1;
     mix-blend-mode: multiply;
     transition: opacity 0.3s ease;
 }
@@ -156,7 +170,7 @@ footer {
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
-    z-index: 9999;
+    z-index: -1;
     mix-blend-mode: normal;
     transition: opacity 0.3s ease;
 }
@@ -164,7 +178,7 @@ footer {
 .cursor-trail__connector {
     position: fixed;
     pointer-events: none;
-    z-index: 9998;
+    z-index: -2;
     background: $primary-color-dark;
     mix-blend-mode: normal;
     transition: opacity 0.3s ease;
@@ -178,14 +192,14 @@ footer {
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
-    z-index: 9999;
+    z-index: -1;
     transition: opacity 0.3s ease;
 }
 
 .cursor-worm__connector {
     position: fixed;
     pointer-events: none;
-    z-index: 9998;
+    z-index: -2;
     background: $primary-color-dark;
     transition: opacity 0.3s ease;
     will-change: transform, width, height, border-radius, rotate;
