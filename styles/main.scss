@@ -144,7 +144,8 @@ footer {
 .custom-cursor {
     width: 10px;
     height: 10px;
-    background-color: $white-color;
+    background-color: $primary-color-dark;
+    border: 1px solid $white-color;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;

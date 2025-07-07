@@ -137,7 +137,8 @@ footer {
 .custom-cursor {
   width: 10px;
   height: 10px;
-  background-color: #FFFFFF;
+  background-color: #5B9279;
+  border: 1px solid #FFFFFF;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
