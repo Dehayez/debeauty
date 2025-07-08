@@ -261,7 +261,7 @@ a:hover ~ .cursor-circle {
   pointer-events: none;
   overflow: visible;
   display: block;
-  z-index: 1;
+  z-index: -1;
 }
 .navbar__swirl-fill {
   fill: #A6D9C6;
@@ -269,13 +269,23 @@ a:hover ~ .cursor-circle {
   transition: opacity 0.3s;
 }
 .navbar__swirl-stroke {
-  stroke: #000;
+  stroke: red;
   stroke-width: 3.4;
   fill: none;
   stroke-miterlimit: 10;
   stroke-dasharray: 800;
   stroke-dashoffset: 800;
   transition: stroke-dashoffset 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.navbar__links > li > a {
+  position: relative;
+  z-index: 1;
+}
+
+.navbar__link-text {
+  position: relative;
+  z-index: 1;
 }
 
 /*# sourceMappingURL=main.css.map */
