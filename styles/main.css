@@ -272,10 +272,6 @@ a:hover ~ .cursor-circle {
   stroke: red;
   stroke-width: 3.4;
   fill: none;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  transition: stroke-dashoffset 0.7s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .navbar__links > li > a {

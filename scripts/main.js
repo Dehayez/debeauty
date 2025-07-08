@@ -284,14 +284,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // Animate on hover
         link.addEventListener('mouseenter', () => {
             const fill = swirl.querySelector('.navbar__swirl-fill');
-            fill.style.opacity = '1';
+            fill.style.transition = 'opacity 0.6s';
+            fill.style.opacity = '0'; // Ensure hidden at start
             gsap.set(stroke, { strokeDashoffset: pathLength });
-            gsap.to(stroke, { strokeDashoffset: 0, duration: 0.2, ease: 'power2.out' });
+            gsap.to(stroke, { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' });
+            // Fade in fill after stroke animation is almost done
+            setTimeout(() => {
+                fill.style.opacity = '1';
+            }, 250);
         });
         link.addEventListener('mouseleave', () => {
             const fill = swirl.querySelector('.navbar__swirl-fill');
-            fill.style.opacity = '0';
-            gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.15, ease: 'power2.in' });
+            fill.style.transition = 'opacity 0.2s';
+            fill.style.opacity = '0'; // Hide fill immediately
+            gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.4, ease: 'power2.in' });
         });
     });
 });
