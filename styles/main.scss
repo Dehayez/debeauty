@@ -55,6 +55,17 @@ footer {
     width: 100%;
     position: relative;
     z-index: 2;
+
+    .footer__credit {
+        font-size: 0.8rem;
+        opacity: 0.7;
+        margin-top: 0.5rem;
+        
+        a {
+            color: $white-color;
+            text-decoration: none;
+        }
+    }
 }
 
 .navbar {
