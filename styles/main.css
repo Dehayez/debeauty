@@ -251,4 +251,31 @@ a:hover ~ .cursor-circle {
   will-change: transform, width, height, border-radius, rotate;
 }
 
+.navbar__swirl {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 22px;
+  pointer-events: none;
+  overflow: visible;
+  display: block;
+  z-index: 1;
+}
+.navbar__swirl-fill {
+  fill: #A6D9C6;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.navbar__swirl-stroke {
+  stroke: #000;
+  stroke-width: 3.4;
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  transition: stroke-dashoffset 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 /*# sourceMappingURL=main.css.map */
