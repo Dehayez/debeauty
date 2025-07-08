@@ -300,9 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('mouseleave', () => {
             const fill = swirl.querySelector('.navbar__swirl-fill');
             fill.style.transition = 'opacity 0.2s';
-            fill.style.opacity = '0'; // Hide fill immediately
-            gsap.set(stroke, { opacity: 1 }); // Instantly reset stroke opacity
-            gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.4, ease: 'power2.in' });
+            fill.style.opacity = '0'; // Hide fill smoothly
+            gsap.to(stroke, { opacity: 1, duration: 0.15, ease: 'power2.in' }); // Fast fade in
+            gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.4, ease: 'power2.in' }); // Animate out
         });
     });
 });
