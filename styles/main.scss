@@ -276,12 +276,12 @@ a {
   z-index: -1;
 
   &-fill {
-    fill: $primary-color;
+    fill: $primary-color-dark;
     opacity: 0;
     transition: opacity 0.3s;
   }
   &-stroke {
-    stroke: red;
+    stroke: $primary-color-dark;
     stroke-width: 3.4;
     fill: none;
   }

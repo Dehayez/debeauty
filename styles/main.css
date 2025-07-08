@@ -264,12 +264,12 @@ a:hover ~ .cursor-circle {
   z-index: -1;
 }
 .navbar__swirl-fill {
-  fill: #A6D9C6;
+  fill: #5B9279;
   opacity: 0;
   transition: opacity 0.3s;
 }
 .navbar__swirl-stroke {
-  stroke: red;
+  stroke: #5B9279;
   stroke-width: 3.4;
   fill: none;
 }
