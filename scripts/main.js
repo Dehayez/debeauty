@@ -286,17 +286,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const fill = swirl.querySelector('.navbar__swirl-fill');
             fill.style.transition = 'opacity 0.6s';
             fill.style.opacity = '0'; // Ensure hidden at start
-            gsap.set(stroke, { strokeDashoffset: pathLength });
+            gsap.set(stroke, { strokeDashoffset: pathLength, opacity: 1 });
             gsap.to(stroke, { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' });
             // Fade in fill after stroke animation is almost done
             setTimeout(() => {
                 fill.style.opacity = '1';
             }, 250);
+            // Fade out stroke after animation completes
+            setTimeout(() => {
+                gsap.to(stroke, { opacity: 0, duration: 0.3, ease: 'power2.out' });
+            }, 400);
         });
         link.addEventListener('mouseleave', () => {
             const fill = swirl.querySelector('.navbar__swirl-fill');
             fill.style.transition = 'opacity 0.2s';
             fill.style.opacity = '0'; // Hide fill immediately
+            gsap.set(stroke, { opacity: 1 }); // Instantly reset stroke opacity
             gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.4, ease: 'power2.in' });
         });
     });
