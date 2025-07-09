@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('JavaScript is working!');
+// Cleaned up and minimal JavaScript for custom cursor, logo animation, worm trail, and navbar swirl underline
 
-    // Create custom cursor elements
+document.addEventListener('DOMContentLoaded', () => {
+    // Custom cursor elements
     const customCursor = document.createElement('div');
     customCursor.className = 'custom-cursor';
     document.body.appendChild(customCursor);
@@ -10,57 +10,43 @@ document.addEventListener('DOMContentLoaded', () => {
     cursorCircle.className = 'cursor-circle';
     document.body.appendChild(cursorCircle);
 
-    // Get last known cursor position from sessionStorage or use center
+    // Restore last cursor position
     const lastX = sessionStorage.getItem('lastCursorX') || window.innerWidth / 2;
     const lastY = sessionStorage.getItem('lastCursorY') || window.innerHeight / 2;
 
-    // Update custom cursor position
     document.addEventListener('mousemove', (e) => {
-        // Store current position in sessionStorage
         sessionStorage.setItem('lastCursorX', e.clientX);
         sessionStorage.setItem('lastCursorY', e.clientY);
-        
         customCursor.style.left = e.clientX + 'px';
         customCursor.style.top = e.clientY + 'px';
-        
         cursorCircle.style.left = e.clientX + 'px';
         cursorCircle.style.top = e.clientY + 'px';
     });
 
-    // Change cursor appearance when hovering over links
-    const links = document.querySelectorAll('a');
-    links.forEach(link => {
+    // Cursor appearance on links
+    document.querySelectorAll('a').forEach(link => {
         link.addEventListener('mouseenter', () => {
             customCursor.style.width = '6px';
             customCursor.style.height = '6px';
-            
-            // Reset the circle size first to ensure animation plays correctly
             cursorCircle.style.transition = 'none';
             cursorCircle.style.width = '10px';
             cursorCircle.style.height = '10px';
-            
-            // Force reflow to ensure the reset takes effect
             void cursorCircle.offsetWidth;
-            
-            // Restore transition and animate to larger size
             cursorCircle.style.transition = 'width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s';
             cursorCircle.style.width = '30px';
             cursorCircle.style.height = '30px';
             cursorCircle.style.opacity = '1';
         });
-        
         link.addEventListener('mouseleave', () => {
             customCursor.style.width = '10px';
             customCursor.style.height = '10px';
-            
-            // Animate back to small size before hiding
             cursorCircle.style.width = '10px';
             cursorCircle.style.height = '10px';
             cursorCircle.style.opacity = '0';
         });
     });
 
-    // Animate overlay logo to navbar center, then fade in content
+    // Overlay logo animation
     const overlay = document.getElementById('overlay');
     const overlayLogo = document.getElementById('overlay__logo');
     const navbarLogo = document.getElementById('navbar__logo');
@@ -79,23 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             setTimeout(() => {
-                // Make sure navbar is visible for accurate measurement
                 header.style.opacity = '1';
                 header.style.pointerEvents = 'auto';
-
-                // Get bounding rectangles
                 const overlayRect = overlayLogo.getBoundingClientRect();
                 const navbarRect = navbarLogo.getBoundingClientRect();
-                // Calculate translation and scale
                 const deltaX = navbarRect.left + navbarRect.width / 2 - (overlayRect.left + overlayRect.width / 2);
                 const deltaY = navbarRect.top + navbarRect.height / 2 - (overlayRect.top + overlayRect.height / 2);
                 const scale = navbarLogo.offsetWidth / overlayLogo.offsetWidth;
-
-                // Animate overlay logo with fast-then-slow timing
                 overlayLogo.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
                 overlayLogo.style.transition = 'transform 0.65s cubic-bezier(0.77,0,0.175,1), opacity 0.35s';
-
-                // After animation, fade out overlay and fade in content
                 setTimeout(() => {
                     overlay.style.opacity = '0';
                     main.style.opacity = '1';
@@ -105,8 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         footer.style.pointerEvents = 'auto';
                     }
                 }, 500);
-
-                // Move logo element to navbar and remove overlay
                 setTimeout(() => {
                     overlayLogo.style.transform = '';
                     overlayLogo.style.transition = '';
@@ -121,92 +97,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Three-dot worm trail with solid connectors
+    // Worm trail
     const dot1 = document.createElement('div');
     dot1.className = 'cursor-worm__dot';
     document.body.appendChild(dot1);
-
     const dot2 = document.createElement('div');
     dot2.className = 'cursor-worm__dot';
     document.body.appendChild(dot2);
-
     const dot3 = document.createElement('div');
     dot3.className = 'cursor-worm__dot';
     document.body.appendChild(dot3);
-
     const connector1 = document.createElement('div');
     connector1.className = 'cursor-worm__connector';
     document.body.appendChild(connector1);
-
     const connector2 = document.createElement('div');
     connector2.className = 'cursor-worm__connector';
     document.body.appendChild(connector2);
-
-    const RADIUS = 19.5; // 39px diameter
-    
-    // Initialize trail positions at last known cursor position
+    const RADIUS = 19.5;
     let pos1 = { x: parseInt(lastX), y: parseInt(lastY) };
     let pos2 = { x: parseInt(lastX), y: parseInt(lastY) };
     let pos3 = { x: parseInt(lastX), y: parseInt(lastY) };
-
-    // Track actual cursor position separately from the first dot
     let actualMousePos = { x: parseInt(lastX), y: parseInt(lastY) };
-
-    // Create an array to store the last few mouse positions for smoother movement
     const mousePositions = [];
     const positionHistoryLength = 5;
     for (let i = 0; i < positionHistoryLength; i++) {
         mousePositions.push({ x: parseInt(lastX), y: parseInt(lastY) });
     }
-
     document.addEventListener('mousemove', (e) => {
-        // Store the actual cursor position
         actualMousePos.x = e.clientX;
         actualMousePos.y = e.clientY;
-        
-        // Add new position to the beginning of the array
         mousePositions.unshift({ x: e.clientX, y: e.clientY });
-        // Remove the oldest position
         if (mousePositions.length > positionHistoryLength) {
             mousePositions.pop();
         }
     });
-
     function animate() {
-        // Make the first dot follow the actual cursor very slowly
         pos1.x += (actualMousePos.x - pos1.x) * 0.07;
         pos1.y += (actualMousePos.y - pos1.y) * 0.07;
-        
-        // Slower follow for the second dot
         pos2.x += (pos1.x - pos2.x) * 0.15;
         pos2.y += (pos1.y - pos2.y) * 0.15;
-        
-        // Even slower for the third dot, but with acceleration at the end
         const distanceX = pos2.x - pos3.x;
         const distanceY = pos2.y - pos3.y;
         const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-        
-        // Acceleration factor: increases as distance grows
         const accelerationFactor = Math.min(0.35, 0.1 + (distance / 450));
-        
         pos3.x += distanceX * accelerationFactor;
         pos3.y += distanceY * accelerationFactor;
-
-        // Position dots
         gsap.set(dot1, { x: pos1.x - RADIUS, y: pos1.y - RADIUS });
         gsap.set(dot2, { x: pos2.x - RADIUS, y: pos2.y - RADIUS });
         gsap.set(dot3, { x: pos3.x - RADIUS, y: pos3.y - RADIUS });
-
-        // Connector 1: between dot1 and dot2
         connectDots(dot1, dot2, connector1);
-        // Connector 2: between dot2 and dot3
         connectDots(dot2, dot3, connector2);
-
         requestAnimationFrame(animate);
     }
-
     function connectDots(dotA, dotB, connector) {
-        // Get center positions
         const a = dotA.getBoundingClientRect();
         const b = dotB.getBoundingClientRect();
         const ax = a.left + RADIUS;
@@ -229,10 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
             rotate: angle,
         });
     }
-
     animate();
 
-    // Swirl underline effect for navbar links
+    // Swirl underline for navbar links
     const swirlSVG = `\
     <svg class="navbar__swirl" viewBox="0 0 505.62 148.57" xmlns="http://www.w3.org/2000/svg">
       <style>.navbar__swirl-stroke { display: none; }</style>
@@ -240,11 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <path class="navbar__swirl-stroke" d="M56.14,76.98c13.46,4.24,30.64,7.48,39.57-3.45,8.57-10.49,2.41-26.95-7.82-35.83-19.74-17.13-53.02-15.35-70.82,3.78C-.74,60.63-.11,93.95,18.39,112.41c12.85,12.81,31.68,17.89,49.81,18.54,40.69,1.44,79.54-16.74,113.92-38.54,34.38-21.8,66.41-47.73,103.38-64.78,35.75-16.5,75.53-24.19,114.86-22.21,24.38,1.23,49.32,6.45,69.32,20.46,20,14.01,34.11,38.16,31.09,62.38-2.17,17.4-12.97,33.15-27.47,43.01-14.5,9.86-32.38,14.1-49.91,13.72-15.32-.33-31.04-4.33-42.88-14.06-11.84-9.73-19.03-25.89-15.44-40.79,3.59-14.9,19.54-26.56,34.44-22.95" fill="none" stroke-miterlimit="10" stroke-width="3.4"/>
     </svg>`;
 
-    // Only add to nav links, not logo
     document.querySelectorAll('.navbar__links > li > a:not(.navbar__logo-link)').forEach(link => {
         link.style.position = 'relative';
         link.style.display = 'inline-block';
-        // Wrap link text in a span if not already
         if (!link.querySelector('.navbar__link-text')) {
             const textNodes = Array.from(link.childNodes).filter(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim().length > 0);
             textNodes.forEach(node => {
@@ -256,37 +196,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         link.insertAdjacentHTML('beforeend', swirlSVG);
         const swirl = link.querySelector('.navbar__swirl');
-        // --- Fix: Always animate from the true start of the path, and never show stroke on load ---
         const stroke = swirl.querySelector('.navbar__swirl-stroke');
         const pathLength = stroke.getTotalLength();
         stroke.style.strokeDasharray = pathLength;
         stroke.style.strokeDashoffset = pathLength;
-        // Only now, reveal the stroke
         requestAnimationFrame(() => {
             stroke.style.display = 'block';
         });
-        // Animate on hover
+        
+        let fillTimeout, strokeTimeout;
+        
         link.addEventListener('mouseenter', () => {
             const fill = swirl.querySelector('.navbar__swirl-fill');
             fill.style.transition = 'opacity 0.6s';
-            fill.style.opacity = '0'; // Ensure hidden at start
+            fill.style.opacity = '0';
             gsap.set(stroke, { strokeDashoffset: pathLength, opacity: 1 });
             gsap.to(stroke, { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' });
-            // Fade in fill after stroke animation is almost done
-            setTimeout(() => {
+            fillTimeout = setTimeout(() => {
                 fill.style.opacity = '1';
             }, 250);
-            // Fade out stroke after animation completes
-            setTimeout(() => {
+            strokeTimeout = setTimeout(() => {
                 gsap.to(stroke, { opacity: 0, duration: 0.3, ease: 'power2.out' });
             }, 400);
         });
         link.addEventListener('mouseleave', () => {
+            clearTimeout(fillTimeout);
+            clearTimeout(strokeTimeout);
             const fill = swirl.querySelector('.navbar__swirl-fill');
-            fill.style.transition = 'opacity 0.2s';
-            fill.style.opacity = '0'; // Hide fill smoothly
-            gsap.to(stroke, { opacity: 1, duration: 0.15, ease: 'power2.in' }); // Fast fade in
-            gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.4, ease: 'power2.in' }); // Animate out
+            fill.style.transition = 'opacity 0.3s';
+            fill.style.opacity = '0';
+            gsap.to(stroke, { opacity: 1, duration: 0.15, ease: 'power2.in' });
+            gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.4, ease: 'power2.in' });
         });
     });
 });
