@@ -222,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('mouseleave', () => {
             clearTimeout(fillTimeout);
             clearTimeout(strokeTimeout);
+            gsap.killTweensOf(stroke);
             const fill = swirl.querySelector('.navbar__swirl-fill');
             fill.style.transition = 'opacity 0.3s';
             fill.style.opacity = '0';
