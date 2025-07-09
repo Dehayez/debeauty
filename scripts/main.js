@@ -208,16 +208,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         link.addEventListener('mouseenter', () => {
             const fill = swirl.querySelector('.navbar__swirl-fill');
-            fill.style.transition = 'opacity 0.6s';
+            fill.style.transition = 'opacity 0.75s';
             fill.style.opacity = '0';
             gsap.set(stroke, { strokeDashoffset: pathLength, opacity: 1 });
             gsap.to(stroke, { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' });
             fillTimeout = setTimeout(() => {
                 fill.style.opacity = '1';
-            }, 250);
+            }, 140);
             strokeTimeout = setTimeout(() => {
                 gsap.to(stroke, { opacity: 0, duration: 0.3, ease: 'power2.out' });
-            }, 400);
+            }, 360);
         });
         link.addEventListener('mouseleave', () => {
             clearTimeout(fillTimeout);
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fill.style.transition = 'opacity 0.3s';
             fill.style.opacity = '0';
             gsap.to(stroke, { opacity: 1, duration: 0.15, ease: 'power2.in' });
-            gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.4, ease: 'power2.in' });
+            gsap.to(stroke, { strokeDashoffset: pathLength, duration: 0.35, ease: 'power2.in' });
         });
     });
 });
