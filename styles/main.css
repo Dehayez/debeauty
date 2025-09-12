@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #A6D9C6;
+  background-color: #FFFFFF;
   color: #12130F;
   font-family: "Josefin Sans", Arial, sans-serif;
   font-weight: 300;
@@ -58,7 +58,7 @@ footer .footer__credit {
   margin-top: 0.5rem;
 }
 footer .footer__credit a {
-  color: #FFFFFF;
+  color: #5B9279;
   text-decoration: none;
 }
 
@@ -91,13 +91,14 @@ footer .footer__credit a {
 }
 .navbar__links li a {
   text-decoration: none;
-  color: #FFFFFF;
+  color: #A6D9C6;
   font-size: 1.4rem;
-  transition: transform 0.3s;
+  transition: all 0.3s;
   display: inline-block;
 }
 .navbar__links li a:hover {
-  transform: scale(1.07);
+  transform: scale(1.02);
+  color: #5B9279;
 }
 
 .navbar__swirl {
@@ -149,7 +150,7 @@ footer .footer__credit a {
 .cursor-circle {
   width: 10px;
   height: 10px;
-  border: 1.7px solid #5B9279;
+  border: 1.5px solid #5B9279;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -172,56 +173,10 @@ a:hover ~ .cursor-circle {
   opacity: 1;
 }
 
-.cursor-trail {
-  width: 20px;
-  height: 20px;
-  background: #9BD4BF;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: -1;
-  mix-blend-mode: multiply;
-  transition: opacity 0.3s ease;
-}
-
-.cursor-trail:nth-child(2) {
-  width: 15px;
-  height: 15px;
-  background: #9BD4BF;
-}
-
-.cursor-trail:nth-child(3) {
-  width: 10px;
-  height: 10px;
-  background: #9BD4BF;
-}
-
-.cursor-trail__head, .cursor-trail__tail {
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: -1;
-  mix-blend-mode: normal;
-  transition: opacity 0.3s ease;
-}
-
-.cursor-trail__connector {
-  position: fixed;
-  pointer-events: none;
-  z-index: -2;
-  background: #9BD4BF;
-  mix-blend-mode: normal;
-  transition: opacity 0.3s ease;
-  will-change: transform, width, height, border-radius, rotate;
-}
-
 .cursor-worm__dot {
   width: 39px;
   height: 39px;
-  background: #9BD4BF;
+  background: #DBF0E8;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -233,7 +188,7 @@ a:hover ~ .cursor-circle {
   position: fixed;
   pointer-events: none;
   z-index: -2;
-  background: #9BD4BF;
+  background: #DBF0E8;
   transition: opacity 0.3s ease;
   will-change: transform, width, height, border-radius, rotate;
 }
