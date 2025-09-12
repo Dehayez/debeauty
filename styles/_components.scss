@@ -1,0 +1,45 @@
+@use 'variables' as *;
+
+// Logo components
+.logo-center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-center {
+    max-width: 180px;
+    width: 60vw;
+    height: auto;
+    transition: transform 1s cubic-bezier(0.77,0,0.175,1), opacity 0.5s;
+    will-change: transform, opacity;
+}
+
+.overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $primary-color;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.7s cubic-bezier(0.77,0,0.175,1);
+
+    &__logo {
+        max-width: 180px;
+        width: 60vw;
+        height: auto;
+        transition: transform 1s cubic-bezier(0.77,0,0.175,1), opacity 0.5s;
+        will-change: transform, opacity;
+    }
+}
+
+.logo__center-container, .logo__center {
+    display: none !important;
+}

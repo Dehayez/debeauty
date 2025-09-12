@@ -1,0 +1,109 @@
+@use 'variables' as *;
+
+// Custom cursor styling
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    background-color: $primary-color-dark;
+    border: 1px solid $white-color;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+.cursor-circle {
+    width: 10px;
+    height: 10px;
+    border: 1.7px solid $primary-color-dark;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s;
+}
+
+a {
+    cursor: none;
+    
+    &:hover ~ .custom-cursor {
+        width: 6px;
+        height: 6px;
+    }
+    
+    &:hover ~ .cursor-circle {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+}
+
+.cursor-trail {
+    width: 20px;
+    height: 20px;
+    background: $primary-color-shade;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: multiply;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-trail:nth-child(2) {
+    width: 15px;
+    height: 15px;
+    background: $primary-color-shade;
+}
+
+.cursor-trail:nth-child(3) {
+    width: 10px;
+    height: 10px;
+    background: $primary-color-shade;
+}
+
+.cursor-trail__head, .cursor-trail__tail {
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: normal;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-trail__connector {
+    position: fixed;
+    pointer-events: none;
+    z-index: -2;
+    background: $primary-color-shade;
+    mix-blend-mode: normal;
+    transition: opacity 0.3s ease;
+    will-change: transform, width, height, border-radius, rotate;
+}
+
+.cursor-worm__dot {
+    width: 39px;
+    height: 39px;
+    background: $primary-color-shade;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-worm__connector {
+    position: fixed;
+    pointer-events: none;
+    z-index: -2;
+    background: $primary-color-shade;
+    transition: opacity 0.3s ease;
+    will-change: transform, width, height, border-radius, rotate;
+}
