@@ -219,7 +219,7 @@ a:hover ~ .cursor-circle {
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  background: #A6D9C6;
+  background: #FFFFFF;
   z-index: 9999;
   display: flex;
   align-items: center;
