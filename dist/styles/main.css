@@ -79,6 +79,19 @@ footer .footer__credit a {
   list-style: none;
   padding: 0;
   font-family: "ParisAvenue", Arial, sans-serif;
+  width: 100%;
+}
+.navbar__left-links {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  justify-content: flex-start;
+}
+.navbar__right-links {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  justify-content: flex-end;
 }
 .navbar__logo-container {
   display: flex;
@@ -87,6 +100,7 @@ footer .footer__credit a {
   flex: 0 0 auto;
   height: 60px;
   min-width: 120px;
+  margin: 0 2rem;
 }
 .navbar__logo {
   max-width: 80px;

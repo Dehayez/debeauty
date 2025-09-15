@@ -12,6 +12,21 @@
         list-style: none;
         padding: 0;
         font-family: $font-family-title;
+        width: 100%;
+    }
+
+    &__left-links {
+        display: flex;
+        gap: 2rem;
+        flex: 1;
+        justify-content: space-around;
+    }
+    
+    &__right-links {
+        display: flex;
+        gap: 2rem;
+        flex: 1;
+        justify-content: space-around;
     }
 
     &__logo-container {
@@ -21,6 +36,7 @@
         flex: 0 0 auto;
         height: 60px;
         min-width: 120px;
+        margin: 0 2rem;
     }
     
     &__logo {
