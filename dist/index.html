@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Débeauty - Schoonheid en Verzorging</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
@@ -34,7 +39,77 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <img class="image" src="/assets/logo.png" alt="débeauty">
+    <div id="overlay" class="overlay">
+        <img id="overlay__logo" class="overlay__logo" src="/assets/logo.png" alt="débeauty">
+    </div>
+    <header>
+        <nav class="navbar">
+            <div class="navbar__hamburger">
+                <span class="navbar__hamburger-line"></span>
+                <span class="navbar__hamburger-line"></span>
+                <span class="navbar__hamburger-line"></span>
+            </div>
+            <ul class="navbar__links">
+                <li class="navbar__left-links">
+                    <a href="index.html">Home</a>
+                    <a href="diensten.html">Diensten</a>
+                </li>
+                <li class="navbar__logo-container">
+                    <a href="index.html" class="navbar__logo-link">
+                        <img id="navbar__logo" class="navbar__logo" src="/assets/logo.png" alt="débeauty">
+                    </a>
+                </li>
+                <li class="navbar__right-links">
+                    <a href="over.html">Over ons</a>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="navbar__mobile-overlay">
+            <div class="navbar__mobile-menu">
+                <a href="index.html" class="navbar__mobile-link">Home</a>
+                <a href="diensten.html" class="navbar__mobile-link">Diensten</a>
+                <a href="over.html" class="navbar__mobile-link">Over ons</a>
+                <a href="contact.html" class="navbar__mobile-link">Contact</a>
+            </div>
+        </div>
+    </header>
+    <main style="opacity:0; pointer-events:none;">
+        <section class="hero">
+            <div class="hero__content">
+                <h1 class="hero__title">Welkom bij Débeauty</h1>
+                <p class="hero__subtitle">Dé plek voor verzorging en ontspanning in Baasrode</p>
+                <div class="hero__cta">
+                    <a href="diensten.html" class="btn btn--primary">Ontdek onze diensten</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="features__grid">
+                <div class="feature">
+                    <div class="feature__icon">✨</div>
+                    <h3 class="feature__title">Schoonheidsbehandelingen</h3>
+                    <p class="feature__text">Professionele gezichts- en lichaamsbehandelingen</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">💅</div>
+                    <h3 class="feature__title">Nagelverzorging</h3>
+                    <p class="feature__text">Manicure, pedicure en nagelstyling</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">🧘</div>
+                    <h3 class="feature__title">Ontspanning</h3>
+                    <p class="feature__text">Massages en wellness behandelingen</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer style="opacity:0; pointer-events:none;">
+        <p>&copy; 2025 Débeauty</p>
+        <p class="footer__credit">Website door <a href="https://www.dehayez.com/" target="_blank" rel="noopener">Dehayez</a></p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>

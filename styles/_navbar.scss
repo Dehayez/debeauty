@@ -5,6 +5,38 @@
     position: relative;
     z-index: 2;
 
+    &__hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 10000;
+        position: relative;
+
+        &-line {
+            width: 25px;
+            height: 3px;
+            background-color: $primary-color;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        &.active {
+            .navbar__hamburger-line {
+                &:nth-child(1) {
+                    transform: rotate(45deg) translate(6px, 6px);
+                }
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+                &:nth-child(3) {
+                    transform: rotate(-45deg) translate(6px, -6px);
+                }
+            }
+        }
+    }
+
     &__links {
         display: flex;
         align-items: center;
@@ -56,6 +88,81 @@
         &:hover {
             transform: scale(1.02);
             color: $primary-color-dark;
+        }
+    }
+
+    &__mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: $white-color;
+        z-index: 9999;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        &.active {
+            display: flex;
+            opacity: 1;
+        }
+    }
+
+    &__mobile-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        gap: 2rem;
+    }
+
+    &__mobile-link {
+        color: $black-color;
+        text-decoration: none;
+        font-family: $font-family-title;
+        font-size: 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+
+        &:hover {
+            color: $primary-color-dark;
+            transform: scale(1.05);
+            background-color: rgba($primary-color, 0.1);
+        }
+    }
+
+    // Responsive breakpoints
+    @media (max-width: 768px) {
+        padding: 1rem 2rem;
+        
+        &__hamburger {
+            display: flex;
+        }
+
+        &__links {
+            display: none;
+        }
+
+        &__logo-container {
+            margin: 0 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 1rem 1rem;
+        
+        &__logo {
+            max-width: 60px;
+            max-height: 45px;
+        }
+
+        &__mobile-link {
+            font-size: 1.8rem;
         }
     }
 }

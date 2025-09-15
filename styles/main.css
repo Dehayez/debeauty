@@ -72,6 +72,31 @@ footer .footer__credit a {
   position: relative;
   z-index: 2;
 }
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 10000;
+  position: relative;
+}
+.navbar__hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #A6D9C6;
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+.navbar__hamburger.active .navbar__hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.navbar__hamburger.active .navbar__hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.navbar__hamburger.active .navbar__hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
 .navbar__links {
   display: flex;
   align-items: center;
@@ -118,6 +143,72 @@ footer .footer__credit a {
 .navbar__links li a:hover {
   transform: scale(1.02);
   color: #5B9279;
+}
+.navbar__mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #FFFFFF;
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.navbar__mobile-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+.navbar__mobile-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 2rem;
+}
+.navbar__mobile-link {
+  color: #12130F;
+  text-decoration: none;
+  font-family: "ParisAvenue", Arial, sans-serif;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+}
+.navbar__mobile-link:hover {
+  color: #5B9279;
+  transform: scale(1.05);
+  background-color: rgba(166, 217, 198, 0.1);
+}
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+  .navbar__hamburger {
+    display: flex;
+  }
+  .navbar__links {
+    display: none;
+  }
+  .navbar__logo-container {
+    margin: 0 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
+  .navbar__logo {
+    max-width: 60px;
+    max-height: 45px;
+  }
+  .navbar__mobile-link {
+    font-size: 1.8rem;
+  }
 }
 
 .navbar__swirl {

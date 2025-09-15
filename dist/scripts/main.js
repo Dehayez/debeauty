@@ -231,6 +231,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     animate();
 
+    // Hamburger menu functionality
+    const hamburger = document.querySelector('.navbar__hamburger');
+    const mobileOverlay = document.querySelector('.navbar__mobile-overlay');
+    const mobileLinks = document.querySelectorAll('.navbar__mobile-link');
+
+    if (hamburger && mobileOverlay) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking on mobile links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu when clicking outside
+        mobileOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileOverlay) {
+                hamburger.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu on window resize to desktop size
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
     // Swirl underline for navbar links
     const swirlSVG = `\
     <svg class="navbar__swirl" viewBox="0 0 505.62 148.57" xmlns="http://www.w3.org/2000/svg">
