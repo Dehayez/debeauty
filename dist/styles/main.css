@@ -19,6 +19,11 @@ body {
   cursor: none; /* Hide default cursor */
 }
 
+/* Ensure cursor is always none for all interactive elements */
+a, button, input, textarea, select, .btn, .service-card, [role=button] {
+  cursor: none !important;
+}
+
 header {
   width: 100%;
   position: relative;
