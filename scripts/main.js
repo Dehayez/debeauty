@@ -23,9 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorCircle.style.top = e.clientY + 'px';
     });
 
-    // Cursor appearance on links
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('mouseenter', () => {
+    // Cursor appearance on interactive elements
+    const interactiveElements = document.querySelectorAll('a, .service-card, .btn, button, input, textarea, select');
+    
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
             customCursor.style.width = '6px';
             customCursor.style.height = '6px';
             cursorCircle.style.transition = 'none';
@@ -37,12 +39,67 @@ document.addEventListener('DOMContentLoaded', () => {
             cursorCircle.style.height = '30px';
             cursorCircle.style.opacity = '1';
         });
-        link.addEventListener('mouseleave', () => {
+        element.addEventListener('mouseleave', () => {
             customCursor.style.width = '10px';
             customCursor.style.height = '10px';
             cursorCircle.style.width = '10px';
             cursorCircle.style.height = '10px';
             cursorCircle.style.opacity = '0';
+        });
+    });
+
+    // Service card click functionality with smooth scroll
+    document.querySelectorAll('.service-card').forEach(card => {
+        
+        card.addEventListener('click', () => {
+            const title = card.querySelector('.service-card__title').textContent.toLowerCase();
+            let targetId = '';
+            
+            // Map service card titles to corresponding price list sections
+            switch(title) {
+                case 'gelaatsbehandeling':
+                    targetId = 'gelaatsbehandeling';
+                    break;
+                case 'manicure':
+                    targetId = 'manicure';
+                    break;
+                case 'pedicure':
+                    targetId = 'pedicure';
+                    break;
+                case 'massage':
+                    targetId = 'massage';
+                    break;
+                case 'epilatie':
+                    targetId = 'epilatie';
+                    break;
+                case 'make-up':
+                    targetId = 'make-up';
+                    break;
+            }
+            
+            if (targetId) {
+                // Find the service category section by looking for the title text
+                const allTitles = document.querySelectorAll('.service-category__title');
+                let targetSection = null;
+                
+                allTitles.forEach(title => {
+                    if (title.textContent.toLowerCase().includes(targetId)) {
+                        targetSection = title;
+                    }
+                });
+                
+                if (targetSection) {
+                    // Calculate offset to add margin at the top
+                    const offset = 100; // 100px margin from top
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
         });
     });
 
