@@ -1,50 +1,65 @@
 // Cleaned up and minimal JavaScript for custom cursor, logo animation, worm trail, and navbar swirl underline
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Custom cursor elements
-    const customCursor = document.createElement('div');
-    customCursor.className = 'custom-cursor';
-    document.body.appendChild(customCursor);
+    // Find existing custom cursor elements (created in HTML for immediate availability)
+    const customCursor = document.querySelector('.custom-cursor');
+    const cursorCircle = document.querySelector('.cursor-circle');
 
-    const cursorCircle = document.createElement('div');
-    cursorCircle.className = 'cursor-circle';
-    document.body.appendChild(cursorCircle);
+    // If elements don't exist, create them (fallback)
+    if (!customCursor) {
+        const newCursor = document.createElement('div');
+        newCursor.className = 'custom-cursor';
+        document.body.appendChild(newCursor);
+    }
+    if (!cursorCircle) {
+        const newCircle = document.createElement('div');
+        newCircle.className = 'cursor-circle';
+        document.body.appendChild(newCircle);
+    }
+
+    // Get references to cursor elements
+    const cursor = customCursor || document.querySelector('.custom-cursor');
+    const circle = cursorCircle || document.querySelector('.cursor-circle');
 
     // Restore last cursor position
     const lastX = sessionStorage.getItem('lastCursorX') || window.innerWidth / 2;
     const lastY = sessionStorage.getItem('lastCursorY') || window.innerHeight / 2;
 
-    document.addEventListener('mousemove', (e) => {
+    // Update cursor position (enhance the inline script's basic tracking)
+    const updateCursor = (e) => {
         sessionStorage.setItem('lastCursorX', e.clientX);
         sessionStorage.setItem('lastCursorY', e.clientY);
-        customCursor.style.left = e.clientX + 'px';
-        customCursor.style.top = e.clientY + 'px';
-        cursorCircle.style.left = e.clientX + 'px';
-        cursorCircle.style.top = e.clientY + 'px';
-    });
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        circle.style.left = e.clientX + 'px';
+        circle.style.top = e.clientY + 'px';
+    };
+
+    // Add mousemove listener (will work alongside inline script, but this one handles all features)
+    document.addEventListener('mousemove', updateCursor);
 
     // Cursor appearance on interactive elements
     const interactiveElements = document.querySelectorAll('a, .service-card, .btn, button, input, textarea, select');
     
     interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
-            customCursor.style.width = '6px';
-            customCursor.style.height = '6px';
-            cursorCircle.style.transition = 'none';
-            cursorCircle.style.width = '10px';
-            cursorCircle.style.height = '10px';
-            void cursorCircle.offsetWidth;
-            cursorCircle.style.transition = 'width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s';
-            cursorCircle.style.width = '30px';
-            cursorCircle.style.height = '30px';
-            cursorCircle.style.opacity = '1';
+            cursor.style.width = '6px';
+            cursor.style.height = '6px';
+            circle.style.transition = 'none';
+            circle.style.width = '10px';
+            circle.style.height = '10px';
+            void circle.offsetWidth;
+            circle.style.transition = 'width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s';
+            circle.style.width = '30px';
+            circle.style.height = '30px';
+            circle.style.opacity = '1';
         });
         element.addEventListener('mouseleave', () => {
-            customCursor.style.width = '10px';
-            customCursor.style.height = '10px';
-            cursorCircle.style.width = '10px';
-            cursorCircle.style.height = '10px';
-            cursorCircle.style.opacity = '0';
+            cursor.style.width = '10px';
+            cursor.style.height = '10px';
+            circle.style.width = '10px';
+            circle.style.height = '10px';
+            circle.style.opacity = '0';
         });
     });
 
@@ -154,22 +169,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Worm trail
-    const dot1 = document.createElement('div');
-    dot1.className = 'cursor-worm__dot';
-    document.body.appendChild(dot1);
-    const dot2 = document.createElement('div');
-    dot2.className = 'cursor-worm__dot';
-    document.body.appendChild(dot2);
-    const dot3 = document.createElement('div');
-    dot3.className = 'cursor-worm__dot';
-    document.body.appendChild(dot3);
-    const connector1 = document.createElement('div');
-    connector1.className = 'cursor-worm__connector';
-    document.body.appendChild(connector1);
-    const connector2 = document.createElement('div');
-    connector2.className = 'cursor-worm__connector';
-    document.body.appendChild(connector2);
+    // Worm trail - find existing elements or create them
+    const wormDots = document.querySelectorAll('.cursor-worm__dot');
+    const wormConnectors = document.querySelectorAll('.cursor-worm__connector');
+    
+    let dot1, dot2, dot3, connector1, connector2;
+    
+    if (wormDots.length >= 3 && wormConnectors.length >= 2) {
+        dot1 = wormDots[0];
+        dot2 = wormDots[1];
+        dot3 = wormDots[2];
+        connector1 = wormConnectors[0];
+        connector2 = wormConnectors[1];
+    } else {
+        // Fallback: create if they don't exist
+        dot1 = document.createElement('div');
+        dot1.className = 'cursor-worm__dot';
+        document.body.appendChild(dot1);
+        dot2 = document.createElement('div');
+        dot2.className = 'cursor-worm__dot';
+        document.body.appendChild(dot2);
+        dot3 = document.createElement('div');
+        dot3.className = 'cursor-worm__dot';
+        document.body.appendChild(dot3);
+        connector1 = document.createElement('div');
+        connector1.className = 'cursor-worm__connector';
+        document.body.appendChild(connector1);
+        connector2 = document.createElement('div');
+        connector2.className = 'cursor-worm__connector';
+        document.body.appendChild(connector2);
+    }
     const RADIUS = 19.5;
     let pos1 = { x: parseInt(lastX), y: parseInt(lastY) };
     let pos2 = { x: parseInt(lastX), y: parseInt(lastY) };

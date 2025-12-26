@@ -39,6 +39,32 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+    <!-- Custom cursor elements - added immediately to prevent default cursor flash -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-circle"></div>
+    <div class="cursor-worm__dot"></div>
+    <div class="cursor-worm__dot"></div>
+    <div class="cursor-worm__dot"></div>
+    <div class="cursor-worm__connector"></div>
+    <div class="cursor-worm__connector"></div>
+    
+    <!-- Initialize cursor immediately to prevent default cursor flash -->
+    <script>
+        (function() {
+            const lastX = sessionStorage.getItem('lastCursorX') || (typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
+            const lastY = sessionStorage.getItem('lastCursorY') || (typeof window !== 'undefined' ? window.innerHeight / 2 : 0);
+            const customCursor = document.querySelector('.custom-cursor');
+            const cursorCircle = document.querySelector('.cursor-circle');
+            
+            if (customCursor && cursorCircle) {
+                customCursor.style.left = lastX + 'px';
+                customCursor.style.top = lastY + 'px';
+                cursorCircle.style.left = lastX + 'px';
+                cursorCircle.style.top = lastY + 'px';
+            }
+        })();
+    </script>
+    
     <div id="overlay" class="overlay">
         <img id="overlay__logo" class="overlay__logo" src="/assets/logo.png" alt="débeauty">
     </div>
