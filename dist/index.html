@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Débeauty - Schoonheid en Verzorging</title>
+    <title>Débeauty</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,32 +39,6 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <!-- Custom cursor elements - added immediately to prevent default cursor flash -->
-    <div class="custom-cursor"></div>
-    <div class="cursor-circle"></div>
-    <div class="cursor-worm__dot"></div>
-    <div class="cursor-worm__dot"></div>
-    <div class="cursor-worm__dot"></div>
-    <div class="cursor-worm__connector"></div>
-    <div class="cursor-worm__connector"></div>
-    
-    <!-- Initialize cursor immediately to prevent default cursor flash -->
-    <script>
-        (function() {
-            const lastX = sessionStorage.getItem('lastCursorX') || (typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
-            const lastY = sessionStorage.getItem('lastCursorY') || (typeof window !== 'undefined' ? window.innerHeight / 2 : 0);
-            const customCursor = document.querySelector('.custom-cursor');
-            const cursorCircle = document.querySelector('.cursor-circle');
-            
-            if (customCursor && cursorCircle) {
-                customCursor.style.left = lastX + 'px';
-                customCursor.style.top = lastY + 'px';
-                cursorCircle.style.left = lastX + 'px';
-                cursorCircle.style.top = lastY + 'px';
-            }
-        })();
-    </script>
-    
     <div id="overlay" class="overlay">
         <img id="overlay__logo" class="overlay__logo" src="/assets/logo.png" alt="débeauty">
     </div>
@@ -77,26 +51,26 @@
             </div>
             <ul class="navbar__links">
                 <li class="navbar__left-links">
-                    <a href="index.html">Home</a>
-                    <a href="diensten.html">Diensten</a>
+                    <a href="/">Home</a>
+                    <a href="/diensten">Diensten</a>
                 </li>
                 <li class="navbar__logo-container">
-                    <a href="index.html" class="navbar__logo-link">
+                    <a href="/" class="navbar__logo-link">
                         <img id="navbar__logo" class="navbar__logo" src="/assets/logo.png" alt="débeauty">
                     </a>
                 </li>
                 <li class="navbar__right-links">
-                    <a href="over.html">Over ons</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="/over">Over ons</a>
+                    <a href="/contact">Contact</a>
                 </li>
             </ul>
         </nav>
         <div class="navbar__mobile-overlay">
             <div class="navbar__mobile-menu">
-                <a href="index.html" class="navbar__mobile-link">Home</a>
-                <a href="diensten.html" class="navbar__mobile-link">Diensten</a>
-                <a href="over.html" class="navbar__mobile-link">Over ons</a>
-                <a href="contact.html" class="navbar__mobile-link">Contact</a>
+                <a href="/" class="navbar__mobile-link">Home</a>
+                <a href="/diensten" class="navbar__mobile-link">Diensten</a>
+                <a href="/over" class="navbar__mobile-link">Over ons</a>
+                <a href="/contact" class="navbar__mobile-link">Contact</a>
             </div>
         </div>
     </header>
@@ -104,9 +78,9 @@
         <section class="hero">
             <div class="hero__content">
                 <h1 class="hero__title">Welkom bij Débeauty</h1>
-                <p class="hero__subtitle">Dé plek voor verzorging en ontspanning in Baasrode</p>
+                <p class="hero__subtitle">Dé plek voor verzorging en ontspanning in <strong>Baasrode</strong></p>
                 <div class="hero__cta">
-                    <a href="diensten.html" class="btn btn--primary">Ontdek onze diensten</a>
+                    <a href="/diensten" class="btn btn--primary">Ontdek onze diensten</a>
                 </div>
             </div>
         </section>
@@ -136,6 +110,6 @@
         <p class="footer__credit">Website door <a href="https://www.dehayez.com/" target="_blank" rel="noopener">Dehayez</a></p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="scripts/main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

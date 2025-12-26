@@ -144,6 +144,9 @@ footer .footer__credit a {
   transform: scale(1.02);
   color: #5B9279;
 }
+.navbar__links li a.navbar__link--active {
+  color: #5B9279;
+}
 .navbar__mobile-overlay {
   position: fixed;
   top: 0;

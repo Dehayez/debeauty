@@ -5,10 +5,6 @@
   font-style: normal;
   font-display: swap;
 }
-html {
-  cursor: none !important; /* Hide default cursor globally */
-}
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -23,13 +19,8 @@ body {
   cursor: none; /* Hide default cursor */
 }
 
-/* Ensure cursor is always none for all elements */
-* {
-  cursor: none !important;
-}
-
 /* Ensure cursor is always none for all interactive elements */
-a, button, input, textarea, select, .btn, .service-card, [role=button], label {
+a, button, input, textarea, select, .btn, .service-card, [role=button] {
   cursor: none !important;
 }
 
@@ -151,6 +142,9 @@ footer .footer__credit a {
 }
 .navbar__links li a:hover {
   transform: scale(1.02);
+  color: #5B9279;
+}
+.navbar__links li a.navbar__link--active {
   color: #5B9279;
 }
 .navbar__mobile-overlay {
@@ -277,6 +271,19 @@ footer .footer__credit a {
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s;
+}
+
+a {
+  cursor: none;
+}
+a:hover ~ .custom-cursor {
+  width: 6px;
+  height: 6px;
+}
+a:hover ~ .cursor-circle {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
 }
 
 .cursor-worm__dot {
