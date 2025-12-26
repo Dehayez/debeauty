@@ -4,19 +4,24 @@
   "main": "scripts/main.js",
   "scripts": {
     "dev": "concurrently \"yarn watch:sass\" \"yarn serve\"",
-    "serve": "browser-sync start --server --files 'styles/*.css, scripts/*.js, index.html' --port 3001",
+    "serve": "browser-sync start --config bs-config.js",
     "watch:sass": "nodemon --watch styles --ext scss --exec 'sass styles/main.scss styles/main.css'",
     "build:css": "sass styles/main.scss dist/styles/main.css",
     "build:copy": "mkdir -p dist/scripts/modules dist/assets && cp -r assets/* dist/assets && cp index.html dist/index.html && cp scripts/main.js dist/scripts/main.js && cp -r scripts/modules/* dist/scripts/modules/ && cp styles/main.css dist/styles/main.css",
     "build": "yarn build:css && yarn build:copy"
   },
   "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-router-dom": "^7.11.0",
     "sass": "^1.85.0"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
     "browser-sync": "^2.27.7",
     "concurrently": "^9.1.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "vite": "^7.3.0"
   },
   "license": "MIT"
 }
