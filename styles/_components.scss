@@ -465,60 +465,6 @@
     }
 }
 
-// External partner section
-.external-partner {
-    margin-bottom: 4rem;
-    
-    &__title {
-        font-family: "ParisAvenue", sans-serif;
-        font-size: 1.8rem;
-        font-weight: 300;
-        text-align: center;
-        margin-bottom: 2rem;
-        color: $black-color;
-    }
-    
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-}
-
-.external-partner__member {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: #f8f8f8;
-    border-radius: 8px;
-    
-    .external-partner__avatar {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-    }
-    
-    .external-partner__name {
-        font-family: "ParisAvenue", sans-serif;
-        font-size: 1.3rem;
-        font-weight: 400;
-        margin-bottom: 0.5rem;
-        color: $black-color;
-    }
-    
-    .external-partner__role {
-        font-size: 1rem;
-        color: $primary-color-dark;
-        margin-bottom: 1rem;
-        font-weight: 500;
-    }
-    
-    .external-partner__bio {
-        font-size: 0.9rem;
-        color: $primary-color-dark;
-        line-height: 1.5;
-    }
-}
-
 // Button component
 .btn {
     display: inline-block;
