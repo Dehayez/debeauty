@@ -7,6 +7,9 @@ export function initNavbarSwirl() {
       <path class="navbar__swirl-stroke" d="M56.14,76.98c13.46,4.24,30.64,7.48,39.57-3.45,8.57-10.49,2.41-26.95-7.82-35.83-19.74-17.13-53.02-15.35-70.82,3.78C-.74,60.63-.11,93.95,18.39,112.41c12.85,12.81,31.68,17.89,49.81,18.54,40.69,1.44,79.54-16.74,113.92-38.54,34.38-21.8,66.41-47.73,103.38-64.78,35.75-16.5,75.53-24.19,114.86-22.21,24.38,1.23,49.32,6.45,69.32,20.46,20,14.01,34.11,38.16,31.09,62.38-2.17,17.4-12.97,33.15-27.47,43.01-14.5,9.86-32.38,14.1-49.91,13.72-15.32-.33-31.04-4.33-42.88-14.06-11.84-9.73-19.03-25.89-15.44-40.79,3.59-14.9,19.54-26.56,34.44-22.95" fill="none" stroke-miterlimit="10" stroke-width="3.4"/>
     </svg>`;
 
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
+
     document.querySelectorAll('.navbar__links > li > a:not(.navbar__logo-link)').forEach(link => {
         link.style.position = 'relative';
         link.style.display = 'inline-block';
@@ -22,6 +25,7 @@ export function initNavbarSwirl() {
         link.insertAdjacentHTML('beforeend', swirlSVG);
         const swirl = link.querySelector('.navbar__swirl');
         const stroke = swirl.querySelector('.navbar__swirl-stroke');
+        const fill = swirl.querySelector('.navbar__swirl-fill');
         const pathLength = stroke.getTotalLength();
         stroke.style.strokeDasharray = pathLength;
         stroke.style.strokeDashoffset = pathLength;
@@ -29,10 +33,19 @@ export function initNavbarSwirl() {
             stroke.style.display = 'block';
         });
         
+        const linkHref = link.getAttribute('href');
+        const linkPage = linkHref.split('/').pop();
+        const isActive = linkPage === currentPage || (currentPage === '' && linkPage === 'index.html');
+        
+        if (isActive) {
+            fill.style.opacity = '1';
+            link.classList.add('navbar__link--active');
+        }
+        
         let fillTimeout, strokeTimeout;
         
         link.addEventListener('mouseenter', () => {
-            const fill = swirl.querySelector('.navbar__swirl-fill');
+            if (isActive) return;
             fill.style.transition = 'opacity 0.75s';
             fill.style.opacity = '0';
             gsap.set(stroke, { strokeDashoffset: pathLength, opacity: 1 });
@@ -45,10 +58,10 @@ export function initNavbarSwirl() {
             }, 360);
         });
         link.addEventListener('mouseleave', () => {
+            if (isActive) return;
             clearTimeout(fillTimeout);
             clearTimeout(strokeTimeout);
             gsap.killTweensOf(stroke);
-            const fill = swirl.querySelector('.navbar__swirl-fill');
             fill.style.transition = 'opacity 0.3s';
             fill.style.opacity = '0';
             gsap.to(stroke, { opacity: 1, duration: 0.15, ease: 'power2.in' });

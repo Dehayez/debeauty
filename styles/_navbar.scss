@@ -89,6 +89,10 @@
             transform: scale(1.02);
             color: $primary-color-dark;
         }
+
+        &.navbar__link--active {
+            color: $primary-color-dark;
+        }
     }
 
     &__mobile-overlay {
