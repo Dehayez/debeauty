@@ -685,6 +685,13 @@ a:hover ~ .cursor-circle {
   color: #12130F;
   border-bottom: 1px solid #f0f0f0;
   padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.service-category__icon {
+  font-size: 1.5rem;
+  display: inline-block;
 }
 .service-category__items {
   display: flex;
