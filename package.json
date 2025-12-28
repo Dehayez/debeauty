@@ -7,7 +7,7 @@
     "serve": "browser-sync start --config bs-config.js",
     "watch:sass": "nodemon --watch styles --ext scss --exec 'sass styles/main.scss styles/main.css'",
     "build:css": "sass styles/main.scss dist/styles/main.css",
-    "build:copy": "mkdir -p dist/scripts/modules dist/assets dist/webFonts/ParisAvenue && cp -r assets/* dist/assets && cp -r webFonts/* dist/webFonts/ && cp index.html dist/index.html && cp scripts/main.js dist/scripts/main.js && cp -r scripts/modules/* dist/scripts/modules/ && cp styles/main.css dist/styles/main.css",
+    "build:copy": "mkdir -p dist/scripts/modules dist/assets dist/webFonts/ParisAvenue && cp -r assets/* dist/assets && cp -r webFonts/* dist/webFonts/ && cp index.html diensten.html over.html contact.html dist/ && cp scripts/main.js dist/scripts/main.js && cp -r scripts/modules/* dist/scripts/modules/ && cp styles/main.css dist/styles/main.css",
     "build": "yarn build:css && yarn build:copy"
   },
   "dependencies": {
