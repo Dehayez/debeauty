@@ -32,6 +32,26 @@ main {
   box-sizing: border-box;
   position: relative;
   z-index: 2;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 480px) {
+  main {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  main {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }
 
 section {
@@ -74,7 +94,6 @@ footer .footer__credit a {
 .navbar {
   padding: 1rem 6rem;
   position: relative;
-  z-index: 2;
 }
 .navbar__hamburger {
   display: none;
@@ -82,7 +101,9 @@ footer .footer__credit a {
   cursor: pointer;
   padding: 0.5rem;
   z-index: 10000;
-  position: relative;
+  position: fixed;
+  top: 1rem;
+  left: 2rem;
 }
 .navbar__hamburger-line {
   width: 25px;
@@ -91,15 +112,16 @@ footer .footer__credit a {
   margin: 3px 0;
   transition: all 0.3s ease;
   border-radius: 2px;
+  transform-origin: center;
 }
 .navbar__hamburger.active .navbar__hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: translateY(9px) rotate(45deg);
 }
 .navbar__hamburger.active .navbar__hamburger-line:nth-child(2) {
   opacity: 0;
 }
 .navbar__hamburger.active .navbar__hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: translateY(-9px) rotate(-45deg);
 }
 .navbar__links {
   display: flex;

@@ -14,7 +14,6 @@
 .navbar {
     padding: 1rem 6rem;
     position: relative;
-    z-index: 2;
 
     &__hamburger {
         display: none;
@@ -22,7 +21,9 @@
         cursor: pointer;
         padding: 0.5rem;
         z-index: 10000;
-        position: relative;
+        position: fixed;
+        top: 1rem;
+        left: 2rem;
 
         &-line {
             width: 25px;
@@ -31,18 +32,19 @@
             margin: 3px 0;
             transition: all 0.3s ease;
             border-radius: 2px;
+            transform-origin: center;
         }
 
         &.active {
             .navbar__hamburger-line {
                 &:nth-child(1) {
-                    transform: rotate(45deg) translate(6px, 6px);
+                    transform: translateY(9px) rotate(45deg);
                 }
                 &:nth-child(2) {
                     opacity: 0;
                 }
                 &:nth-child(3) {
-                    transform: rotate(-45deg) translate(6px, -6px);
+                    transform: translateY(-9px) rotate(-45deg);
                 }
             }
         }
