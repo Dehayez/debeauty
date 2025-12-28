@@ -8,7 +8,7 @@
        url('../webFonts/ParisAvenue/font.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
 }
 
 // Base styles
