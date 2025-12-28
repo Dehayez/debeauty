@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'sass:color';
 
 // Logo components
 .logo-center-container {
@@ -68,12 +69,28 @@
 // Hero section
 .hero {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     min-height: 100vh;
     margin-bottom: 4rem;
     padding: 0 1rem;
+    position: relative;
+
+    &__logo {
+        display: none;
+        max-width: 80px;
+        height: auto;
+        position: absolute;
+        top: 10rem;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @media (max-width: 768px) {
+            display: block;
+        }
+    }
     
     &__content {
         max-width: 600px;
@@ -497,8 +514,8 @@
     &--primary {
         &:hover {
             background: rgba($primary-color, 0.15);
-            border-color: darken($primary-color, 15%);
-            color: darken($primary-color-dark, 10%);
+            border-color: color.adjust($primary-color, $lightness: -15%);
+            color: color.adjust($primary-color-dark, $lightness: -10%);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba($primary-color, 0.4);
         }
