@@ -24,21 +24,11 @@ a, button, input, textarea, select, .btn, .service-card, [role=button] {
   cursor: none !important;
 }
 
-header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  background-color: transparent;
-}
-
 main {
   flex: 1 0 auto;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 1rem 4rem 1rem;
   box-sizing: border-box;
   position: relative;
   z-index: 2;
@@ -68,6 +58,17 @@ footer .footer__credit {
 footer .footer__credit a {
   color: #5B9279;
   text-decoration: none;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
 .navbar {
