@@ -26,8 +26,11 @@ a, button, input, textarea, select, .btn, .service-card, [role=button] {
 
 header {
   width: 100%;
-  position: relative;
-  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: transparent;
 }
 
 main {
@@ -35,7 +38,7 @@ main {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1rem 4rem 1rem;
+  padding: 0 1rem 4rem 1rem;
   box-sizing: border-box;
   position: relative;
   z-index: 2;
@@ -394,9 +397,13 @@ a:hover ~ .cursor-circle {
 }
 
 .hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 4rem 0;
+  min-height: 100vh;
   margin-bottom: 4rem;
+  padding: 0 1rem;
 }
 .hero__content {
   max-width: 600px;
