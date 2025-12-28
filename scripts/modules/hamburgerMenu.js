@@ -1,6 +1,7 @@
 // Hamburger menu functionality
 export function initHamburgerMenu() {
     const hamburger = document.querySelector('.navbar__hamburger');
+    const header = document.querySelector('.header');
     const mobileOverlay = document.querySelector('.navbar__mobile-overlay');
     const mobileLinks = document.querySelectorAll('.navbar__mobile-link');
 
@@ -8,12 +9,40 @@ export function initHamburgerMenu() {
         hamburger.classList.remove('active');
         mobileOverlay.classList.remove('active');
         document.body.style.overflow = '';
+        
+        // Get the natural height of the navbar
+        const navbar = header.querySelector('.navbar');
+        const naturalHeight = navbar ? navbar.offsetHeight : 60;
+        
+        // Set current height first, then animate down
+        header.style.height = `${header.offsetHeight}px`;
+        
+        requestAnimationFrame(() => {
+            header.classList.remove('menu-open');
+            header.style.height = `${naturalHeight}px`;
+            
+            // Reset height after animation completes
+            setTimeout(() => {
+                header.style.height = '';
+            }, 400);
+        });
     }
 
     function openMenu() {
-        hamburger.classList.add('active');
-        mobileOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        const navbar = header.querySelector('.navbar');
+        const currentHeight = navbar ? navbar.offsetHeight : 60;
+        header.style.height = `${currentHeight}px`;
+        
+        requestAnimationFrame(() => {
+            header.classList.add('menu-open');
+            header.style.height = '100vh';
+            
+            requestAnimationFrame(() => {
+                hamburger.classList.add('active');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
     }
 
     if (hamburger && mobileOverlay) {

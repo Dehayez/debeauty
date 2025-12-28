@@ -9,33 +9,32 @@
     background: rgba($white-color, 0.5);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
+    transition: height 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+    
+    &.menu-open {
+        height: 100vh !important;
+    }
 }
 
 .navbar {
     padding: 1rem 6rem;
     position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    z-index: 10001;
 
     &__hamburger {
         display: none;
         flex-direction: column;
         cursor: pointer;
         padding: 0.5rem;
-        z-index: 10000;
-        position: fixed;
-        top: 1rem;
-        left: 1rem;
-        
-        @media (min-width: 480px) {
-            left: 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            left: 2rem;
-        }
-        
-        @media (min-width: 1024px) {
-            left: 2.5rem;
-        }
+        z-index: 10001;
+        position: relative;
+        margin-left: 0;
 
         &-line {
             width: 25px;
@@ -121,20 +120,25 @@
     }
 
     &__mobile-overlay {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-        background-color: $white-color;
-        z-index: 9999;
-        display: none;
+        z-index: 9998;
+        display: flex;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        align-items: center;
+        justify-content: center;
+        background: transparent;
 
         &.active {
-            display: flex;
             opacity: 1;
+            visibility: visible;
+            pointer-events: all;
         }
     }
 
@@ -146,6 +150,8 @@
         width: 100%;
         height: 100%;
         gap: 2rem;
+        position: relative;
+        z-index: 9999;
     }
 
     &__mobile-link {
@@ -157,6 +163,7 @@
         position: relative;
         padding: 1rem 2rem;
         border-radius: 8px;
+        z-index: 10000;
 
         &:hover {
             color: $primary-color-dark;
@@ -171,7 +178,12 @@
 
     // Responsive breakpoints
     @media (max-width: 768px) {
-        padding: 1rem 2rem;
+        padding: 0 1rem;
+        min-height: 70px;
+        
+        @media (min-width: 480px) {
+            padding: 0 1.5rem;
+        }
         
         &__hamburger {
             display: flex;
@@ -187,7 +199,7 @@
     }
 
     @media (max-width: 480px) {
-        padding: 1rem 1rem;
+        min-height: 70px;
         
         &__logo {
             max-width: 60px;
