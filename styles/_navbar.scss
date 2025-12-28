@@ -1,5 +1,16 @@
 @use 'variables' as *;
 
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba($white-color, 0.5);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
 .navbar {
     padding: 1rem 6rem;
     position: relative;
