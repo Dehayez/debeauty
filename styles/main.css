@@ -80,6 +80,33 @@ footer .footer__credit a {
   text-decoration: none;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(91, 146, 121, 0.6);
+  border-radius: 10px;
+  border: 2px solid #FFFFFF;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(91, 146, 121, 0.5);
+}
+::-webkit-scrollbar-thumb:active {
+  background: rgba(91, 146, 121, 0.7);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(91, 146, 121, 0.3) #FFFFFF;
+}
+
 .header {
   position: fixed;
   top: 0;
