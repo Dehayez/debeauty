@@ -32,6 +32,26 @@ main {
   box-sizing: border-box;
   position: relative;
   z-index: 2;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 480px) {
+  main {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  main {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }
 
 section {
@@ -74,7 +94,6 @@ footer .footer__credit a {
 .navbar {
   padding: 1rem 6rem;
   position: relative;
-  z-index: 2;
 }
 .navbar__hamburger {
   display: none;
@@ -82,7 +101,9 @@ footer .footer__credit a {
   cursor: pointer;
   padding: 0.5rem;
   z-index: 10000;
-  position: relative;
+  position: fixed;
+  top: 1rem;
+  left: 2rem;
 }
 .navbar__hamburger-line {
   width: 25px;
@@ -91,15 +112,16 @@ footer .footer__credit a {
   margin: 3px 0;
   transition: all 0.3s ease;
   border-radius: 2px;
+  transform-origin: center;
 }
 .navbar__hamburger.active .navbar__hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: translateY(9px) rotate(45deg);
 }
 .navbar__hamburger.active .navbar__hamburger-line:nth-child(2) {
   opacity: 0;
 }
 .navbar__hamburger.active .navbar__hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: translateY(-9px) rotate(-45deg);
 }
 .navbar__links {
   display: flex;
@@ -191,6 +213,9 @@ footer .footer__credit a {
   transform: scale(1.05);
   background-color: rgba(166, 217, 198, 0.1);
 }
+.navbar__mobile-link.navbar__link--active {
+  color: #5B9279;
+}
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem 2rem;
@@ -239,6 +264,9 @@ footer .footer__credit a {
   stroke: #5B9279;
   stroke-width: 3.4;
   fill: none;
+}
+.navbar__swirl--mobile {
+  bottom: -5px;
 }
 
 .navbar__links > li > a {
@@ -383,6 +411,7 @@ a:hover ~ .cursor-circle {
 .page-header {
   text-align: center;
   margin-bottom: 3rem;
+  padding-top: 7rem;
 }
 .page-header__title {
   font-family: "ParisAvenue", sans-serif;
@@ -399,12 +428,28 @@ a:hover ~ .cursor-circle {
 
 .hero {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   min-height: 100vh;
   margin-bottom: 4rem;
   padding: 0 1rem;
+  position: relative;
+}
+.hero__logo {
+  display: none;
+  max-width: 80px;
+  height: auto;
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 768px) {
+  .hero__logo {
+    display: block;
+  }
 }
 .hero__content {
   max-width: 600px;

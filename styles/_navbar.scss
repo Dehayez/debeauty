@@ -151,6 +151,10 @@
             transform: scale(1.05);
             background-color: rgba($primary-color, 0.1);
         }
+
+        &.navbar__link--active {
+            color: $primary-color-dark;
+        }
     }
 
     // Responsive breakpoints
@@ -206,6 +210,10 @@
     stroke: $primary-color-dark;
     stroke-width: 3.4;
     fill: none;
+  }
+
+  &--mobile {
+    bottom: -5px;
   }
 }
 
