@@ -1,39 +1,108 @@
-// Logo animation module - handles overlay and page reveal
+// Overlay logo animation
 export function initLogoAnimation() {
     const overlay = document.getElementById('overlay');
     const overlayLogo = document.getElementById('overlay__logo');
+    const navbarLogo = document.getElementById('navbar__logo');
+    const header = document.querySelector('header');
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
 
-    if (!overlay || !overlayLogo) return;
+    const MAX_LOAD_TIME = 4000; // Maximum wait time before forcing close
 
-    const tl = gsap.timeline();
+    if (!overlay || !overlayLogo || !navbarLogo) return;
 
-    tl.to(overlayLogo, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        ease: 'power2.out'
-    })
-    .to(overlayLogo, {
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.4,
-        delay: 0.3,
-        ease: 'power2.in'
-    })
-    .to(overlay, {
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power2.out',
-        onComplete: () => {
-            overlay.style.display = 'none';
+    // Skip animation if already played this session
+    if (sessionStorage.getItem('logoAnimationPlayed')) {
+        showContent();
+        overlay.remove();
+        return;
+    }
+
+    // Wait for fonts and logo image, with timeout fallback
+    waitForAssets().then(startAnimation);
+
+    function waitForAssets() {
+        const fontsReady = document.fonts.ready;
+        const logoReady = overlayLogo.complete 
+            ? Promise.resolve() 
+            : new Promise(resolve => {
+                overlayLogo.onload = resolve;
+                overlayLogo.onerror = resolve;
+            });
+        const timeout = new Promise(resolve => setTimeout(resolve, MAX_LOAD_TIME));
+
+        // Wait for fonts + logo, but timeout if too slow
+        return Promise.race([
+            Promise.all([fontsReady, logoReady]),
+            timeout
+        ]);
+    }
+
+    function showContent() {
+        header.style.opacity = '1';
+        header.style.pointerEvents = 'auto';
+        main.style.opacity = '1';
+        main.style.pointerEvents = 'auto';
+        if (footer) {
+            footer.style.opacity = '1';
+            footer.style.pointerEvents = 'auto';
         }
-    })
-    .to([main, footer], {
-        opacity: 1,
-        pointerEvents: 'auto',
-        duration: 0.5,
-        ease: 'power2.out'
-    }, '-=0.2');
+    }
+
+    function startAnimation() {
+        const isMobile = window.innerWidth <= 768;
+
+        header.style.opacity = '1';
+        header.style.pointerEvents = 'auto';
+
+        if (isMobile) {
+            animateMobile();
+        } else {
+            animateDesktop();
+        }
+
+        sessionStorage.setItem('logoAnimationPlayed', 'true');
+    }
+
+    function animateMobile() {
+        // Mobile: simple fade out without navbar animation
+        overlayLogo.style.transition = 'opacity 0.5s ease';
+        overlayLogo.style.opacity = '0';
+
+        setTimeout(() => {
+            overlay.style.opacity = '0';
+            showContent();
+        }, 300);
+
+        setTimeout(() => {
+            overlay.remove();
+        }, 700);
+    }
+
+    function animateDesktop() {
+        // Desktop: animate logo to navbar position
+        const overlayRect = overlayLogo.getBoundingClientRect();
+        const navbarRect = navbarLogo.getBoundingClientRect();
+        const deltaX = navbarRect.left + navbarRect.width / 2 - (overlayRect.left + overlayRect.width / 2);
+        const deltaY = navbarRect.top + navbarRect.height / 2 - (overlayRect.top + overlayRect.height / 2);
+        const scale = navbarLogo.offsetWidth / overlayLogo.offsetWidth;
+
+        overlayLogo.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+        overlayLogo.style.transition = 'transform 0.65s cubic-bezier(0.77,0,0.175,1), opacity 0.35s';
+
+        setTimeout(() => {
+            overlay.style.opacity = '0';
+            showContent();
+        }, 500);
+
+        setTimeout(() => {
+            overlayLogo.style.transform = '';
+            overlayLogo.style.transition = '';
+            navbarLogo.replaceWith(overlayLogo);
+            overlayLogo.id = 'navbar__logo';
+            overlayLogo.className = 'navbar__logo';
+            overlayLogo.removeAttribute('style');
+            overlay.remove();
+        }, 900);
+    }
 }

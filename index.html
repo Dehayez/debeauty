@@ -37,6 +37,17 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles/main.css">
+
+    <!-- Prevent overlay flash on page navigation -->
+    <script>
+        if (sessionStorage.getItem('logoAnimationPlayed')) {
+            document.documentElement.classList.add('animation-played');
+        }
+    </script>
+    <style>
+        .animation-played #overlay { display: none; }
+        .animation-played main, .animation-played footer { opacity: 1 !important; pointer-events: auto !important; }
+    </style>
 </head>
 <body>
     <div id="overlay" class="overlay">
