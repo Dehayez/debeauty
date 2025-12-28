@@ -1,5 +1,9 @@
 // Custom cursor functionality
 export function initCursor() {
+    // Skip custom cursor on touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
     const customCursor = document.createElement('div');
     customCursor.className = 'custom-cursor';
     document.body.appendChild(customCursor);
@@ -46,5 +50,3 @@ export function initCursor() {
         });
     });
 }
-
-

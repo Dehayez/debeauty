@@ -12,6 +12,11 @@
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: width 0.2s, height 0.2s, background 0.2s;
+
+    // Hide on touch devices
+    @media (hover: none) and (pointer: coarse) {
+        display: none;
+    }
 }
 
 .cursor-circle {
@@ -25,6 +30,11 @@
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s;
+
+    // Hide on touch devices
+    @media (hover: none) and (pointer: coarse) {
+        display: none;
+    }
 }
 
 a {
@@ -40,8 +50,12 @@ a {
         height: 30px;
         opacity: 1;
     }
-}
 
+    // Restore normal cursor on touch devices
+    @media (hover: none) and (pointer: coarse) {
+        cursor: auto;
+    }
+}
 
 .cursor-worm__dot {
     width: 39px;
@@ -52,6 +66,11 @@ a {
     pointer-events: none;
     z-index: -1;
     transition: opacity 0.3s ease;
+
+    // Hide on touch devices
+    @media (hover: none) and (pointer: coarse) {
+        display: none;
+    }
 }
 
 .cursor-worm__connector {
@@ -61,4 +80,9 @@ a {
     background: $primary-color-opaque;
     transition: opacity 0.3s ease;
     will-change: transform, width, height, border-radius, rotate;
+
+    // Hide on touch devices
+    @media (hover: none) and (pointer: coarse) {
+        display: none;
+    }
 }

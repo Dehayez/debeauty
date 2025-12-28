@@ -259,6 +259,11 @@ footer .footer__credit a {
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, background 0.2s;
 }
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
 
 .cursor-circle {
   width: 10px;
@@ -271,6 +276,11 @@ footer .footer__credit a {
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s;
+}
+@media (hover: none) and (pointer: coarse) {
+  .cursor-circle {
+    display: none;
+  }
 }
 
 a {
@@ -285,6 +295,11 @@ a:hover ~ .cursor-circle {
   height: 30px;
   opacity: 1;
 }
+@media (hover: none) and (pointer: coarse) {
+  a {
+    cursor: auto;
+  }
+}
 
 .cursor-worm__dot {
   width: 39px;
@@ -296,6 +311,11 @@ a:hover ~ .cursor-circle {
   z-index: -1;
   transition: opacity 0.3s ease;
 }
+@media (hover: none) and (pointer: coarse) {
+  .cursor-worm__dot {
+    display: none;
+  }
+}
 
 .cursor-worm__connector {
   position: fixed;
@@ -304,6 +324,11 @@ a:hover ~ .cursor-circle {
   background: #DBF0E8;
   transition: opacity 0.3s ease;
   will-change: transform, width, height, border-radius, rotate;
+}
+@media (hover: none) and (pointer: coarse) {
+  .cursor-worm__connector {
+    display: none;
+  }
 }
 
 .logo-center-container {

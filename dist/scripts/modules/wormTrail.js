@@ -1,5 +1,9 @@
 // Worm trail animation
 export function initWormTrail() {
+    // Skip worm trail on touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
     const dot1 = document.createElement('div');
     dot1.className = 'cursor-worm__dot';
     document.body.appendChild(dot1);
@@ -85,5 +89,3 @@ export function initWormTrail() {
     
     animate();
 }
-
-
