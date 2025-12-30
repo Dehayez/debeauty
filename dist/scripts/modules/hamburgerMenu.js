@@ -87,7 +87,12 @@ function initMobileLinkActiveState() {
     </svg>`;
 
     const currentPath = window.location.pathname;
-    const currentPage = currentPath.split('/').pop() || 'index.html';
+    let currentPage = currentPath.split('/').pop() || 'index.html';
+    
+    // Normalize current page - handle root path
+    if (currentPage === '' || currentPath.endsWith('/')) {
+        currentPage = 'index.html';
+    }
 
     document.querySelectorAll('.navbar__mobile-link').forEach(link => {
         link.style.position = 'relative';
@@ -116,7 +121,7 @@ function initMobileLinkActiveState() {
         
         const linkHref = link.getAttribute('href');
         const linkPage = linkHref.split('/').pop();
-        const isActive = linkPage === currentPage || (currentPage === '' && linkPage === 'index.html') || (linkHref === '/' && currentPage === 'index.html');
+        const isActive = linkPage === currentPage || (currentPage === 'index.html' && (linkPage === 'index.html' || linkHref === '/' || linkHref === 'index.html'));
         
         if (isActive) {
             fill.style.opacity = '1';

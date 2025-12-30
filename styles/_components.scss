@@ -417,6 +417,7 @@
         border-radius: 4px;
         font-size: 1rem;
         font-family: inherit;
+        box-sizing: border-box;
         transition: border-color 0.3s ease;
         
         &:focus {

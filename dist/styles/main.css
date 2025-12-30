@@ -90,7 +90,7 @@ footer .footer__credit a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(91, 146, 121, 0.3);
+  background: rgba(91, 146, 121, 0.6);
   border-radius: 10px;
   border: 2px solid #FFFFFF;
   transition: background 0.3s ease;
@@ -783,6 +783,7 @@ a:hover ~ .cursor-circle {
   border-radius: 4px;
   font-size: 1rem;
   font-family: inherit;
+  box-sizing: border-box;
   transition: border-color 0.3s ease;
 }
 .contact__form .form__input:focus,

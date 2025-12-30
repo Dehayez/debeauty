@@ -4,6 +4,12 @@ export function initCursor() {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
+    // Remove existing cursor elements if they exist (for page navigation)
+    const existingCursor = document.querySelector('.custom-cursor');
+    const existingCircle = document.querySelector('.cursor-circle');
+    if (existingCursor) existingCursor.remove();
+    if (existingCircle) existingCircle.remove();
+
     const customCursor = document.createElement('div');
     customCursor.className = 'custom-cursor';
     document.body.appendChild(customCursor);
@@ -15,6 +21,12 @@ export function initCursor() {
     // Restore last cursor position
     const lastX = sessionStorage.getItem('lastCursorX') || window.innerWidth / 2;
     const lastY = sessionStorage.getItem('lastCursorY') || window.innerHeight / 2;
+    
+    // Set initial position
+    customCursor.style.left = lastX + 'px';
+    customCursor.style.top = lastY + 'px';
+    cursorCircle.style.left = lastX + 'px';
+    cursorCircle.style.top = lastY + 'px';
 
     document.addEventListener('mousemove', (e) => {
         sessionStorage.setItem('lastCursorX', e.clientX);
