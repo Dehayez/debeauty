@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Débeauty</title>
-
-    <!-- Font Preload -->
-    <link rel="preload" href="/webFonts/ParisAvenue/font.woff2" as="font" type="font/woff2" crossorigin>
+    <title>Débeauty - Schoonheid en Verzorging</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,17 +37,6 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles/main.css">
-
-    <!-- Prevent overlay flash on page navigation -->
-    <script>
-        if (sessionStorage.getItem('logoAnimationPlayed')) {
-            document.documentElement.classList.add('animation-played');
-        }
-    </script>
-    <style>
-        .animation-played #overlay { display: none; }
-        .animation-played main, .animation-played footer { opacity: 1 !important; pointer-events: auto !important; }
-    </style>
 </head>
 <body>
     <div id="overlay" class="overlay">
@@ -65,37 +51,36 @@
             </div>
             <ul class="navbar__links">
                 <li class="navbar__left-links">
-                    <a href="/">Home</a>
-                    <a href="/diensten">Diensten</a>
+                    <a href="index.html">Home</a>
+                    <a href="diensten.html">Diensten</a>
                 </li>
                 <li class="navbar__logo-container">
-                    <a href="/" class="navbar__logo-link">
+                    <a href="index.html" class="navbar__logo-link">
                         <img id="navbar__logo" class="navbar__logo" src="/assets/logo.png" alt="débeauty">
                     </a>
                 </li>
                 <li class="navbar__right-links">
-                    <a href="/over">Over mij</a>
-                    <a href="/contact">Contact</a>
+                    <a href="over.html">Over ons</a>
+                    <a href="contact.html">Contact</a>
                 </li>
             </ul>
         </nav>
         <div class="navbar__mobile-overlay">
             <div class="navbar__mobile-menu">
-                <a href="/" class="navbar__mobile-link">Home</a>
-                <a href="/diensten" class="navbar__mobile-link">Diensten</a>
-                <a href="/over" class="navbar__mobile-link">Over mij</a>
-                <a href="/contact" class="navbar__mobile-link">Contact</a>
+                <a href="index.html" class="navbar__mobile-link">Home</a>
+                <a href="diensten.html" class="navbar__mobile-link">Diensten</a>
+                <a href="over.html" class="navbar__mobile-link">Over ons</a>
+                <a href="contact.html" class="navbar__mobile-link">Contact</a>
             </div>
         </div>
     </header>
     <main style="opacity:0; pointer-events:none;">
         <section class="hero">
-            <img class="hero__logo" src="/assets/logo.png" alt="débeauty">
             <div class="hero__content">
                 <h1 class="hero__title">Welkom bij Débeauty</h1>
                 <p class="hero__subtitle">Dé plek voor verzorging en ontspanning in <strong>Baasrode</strong></p>
                 <div class="hero__cta">
-                    <a href="/diensten" class="btn btn--primary">Ontdek onze diensten</a>
+                    <a href="diensten.html" class="btn btn--primary">Ontdek onze diensten</a>
                 </div>
             </div>
         </section>

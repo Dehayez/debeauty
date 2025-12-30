@@ -20,6 +20,11 @@
 <body>
     <header class="header">
         <nav class="navbar">
+            <div class="navbar__hamburger">
+                <span class="navbar__hamburger-line"></span>
+                <span class="navbar__hamburger-line"></span>
+                <span class="navbar__hamburger-line"></span>
+            </div>
             <ul class="navbar__links">
                 <li class="navbar__left-links">
                     <a href="/">Home</a>
@@ -31,11 +36,19 @@
                     </a>
                 </li>
                 <li class="navbar__right-links">
-                    <a href="/over">Over ons</a>
+                    <a href="/over">Over mij</a>
                     <a href="/contact">Contact</a>
                 </li>
             </ul>
         </nav>
+        <div class="navbar__mobile-overlay">
+            <div class="navbar__mobile-menu">
+                <a href="/" class="navbar__mobile-link">Home</a>
+                <a href="/diensten" class="navbar__mobile-link">Diensten</a>
+                <a href="/over" class="navbar__mobile-link">Over mij</a>
+                <a href="/contact" class="navbar__mobile-link">Contact</a>
+            </div>
+        </div>
     </header>
     <main>
         <section class="page-header">
@@ -74,12 +87,8 @@
                     <div class="contact__item">
                         <div class="contact__icon">🕒</div>
                         <div class="contact__details">
-                            <h3 class="contact__label">Openingsuren</h3>
-                            <p class="contact__text">
-                                Ma-Vr: 9:00 - 18:00<br>
-                                Za: 9:00 - 16:00<br>
-                                Zo: Gesloten
-                            </p>
+                            <h3 class="contact__label">Op afspraak</h3>
+                            <p class="contact__text">Op afspraak</p>
                         </div>
                     </div>
                 </div>
