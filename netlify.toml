@@ -6,21 +6,6 @@
   NODE_VERSION = "20"
 
 [[redirects]]
-  from = "/diensten"
-  to = "/diensten.html"
-  status = 200
-
-[[redirects]]
-  from = "/over"
-  to = "/over.html"
-  status = 200
-
-[[redirects]]
-  from = "/contact"
-  to = "/contact.html"
-  status = 200
-
-[[redirects]]
   from = "/diensten.html"
   to = "/diensten"
   status = 301
@@ -34,3 +19,23 @@
   from = "/contact.html"
   to = "/contact"
   status = 301
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/diensten"
+  to = "/diensten.html"
+  status = 200
+
+[[redirects]]
+  from = "/over"
+  to = "/over.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
