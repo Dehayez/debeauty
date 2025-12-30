@@ -1,4 +1,4 @@
-// Contact form submission handler using Netlify Functions
+// Contact form submission handler using Netlify Forms
 export function initContactForm() {
     const form = document.querySelector('.contact__form');
     if (!form) return;
@@ -12,27 +12,15 @@ export function initContactForm() {
                        window.location.hostname === '';
 
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Verzenden...';
-        }
-
-        if (successMessage) successMessage.style.display = 'none';
-        if (errorMessage) errorMessage.style.display = 'none';
-
-        const formData = new FormData(form);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            phone: formData.get('phone') || '',
-            service: formData.get('service') || '',
-            message: formData.get('message') || ''
-        };
-
         if (isLocalhost) {
-            console.log('Localhost detected - simulating form submission:', data);
+            e.preventDefault();
+            console.log('Localhost detected - simulating form submission');
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Verzenden...';
+            }
+
             setTimeout(() => {
                 if (successMessage) {
                     successMessage.style.display = 'block';
@@ -50,21 +38,23 @@ export function initContactForm() {
             return;
         }
 
-        fetch('/.netlify/functions/send-email', {
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Verzenden...';
+        }
+
+        if (successMessage) successMessage.style.display = 'none';
+        if (errorMessage) errorMessage.style.display = 'none';
+
+        const formData = new FormData(form);
+        
+        fetch('/', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(result => {
-            if (result.success) {
+            if (response.ok) {
                 if (successMessage) {
                     successMessage.style.display = 'block';
                     form.reset();
@@ -73,7 +63,7 @@ export function initContactForm() {
                     }, 100);
                 }
             } else {
-                throw new Error(result.error || 'Unknown error');
+                throw new Error('Form submission failed');
             }
         })
         .catch(error => {

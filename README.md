@@ -29,18 +29,27 @@ netlify dev
 
 ## Email Setup (Production)
 
-The contact form requires a Resend API key to send emails. To set this up:
+The contact form uses **Netlify Forms** which is built-in and requires no API keys!
 
-1. Create an account at [Resend](https://resend.com)
-2. Get your API key from the Resend dashboard
-3. In your Netlify site settings, go to **Site settings > Environment variables**
-4. Add a new environment variable:
-   - **Key**: `RESEND_API_KEY`
-   - **Value**: Your Resend API key
-5. Redeploy your site
+### Setup Steps:
 
-The form will send:
-- An email to `info@debeauty.be` with the form submission
-- A confirmation email to the user who submitted the form
+1. **Deploy your site to Netlify** (if not already deployed)
+2. **Go to Netlify Dashboard** → Your site → **Forms**
+3. **Configure email notifications**:
+   - Click on the "contact" form
+   - Go to **Notifications** tab
+   - Click **Add notification**
+   - Select **Email notification**
+   - Enter: `info@debeauty.be`
+   - Save
 
-**Note**: Make sure to verify your domain in Resend or use a verified email address for the "from" field in the function.
+That's it! The form will now send emails to `info@debeauty.be` whenever someone submits the form.
+
+### Optional: Confirmation Emails
+
+If you want to send confirmation emails to users, you can:
+1. Set up a Resend account (free tier available)
+2. Add `RESEND_API_KEY` as an environment variable in Netlify
+3. The confirmation email function will automatically work
+
+**Note**: The main email to `info@debeauty.be` works immediately with just Netlify Forms - no external services needed!

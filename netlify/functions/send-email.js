@@ -26,14 +26,34 @@ const handler = async (event) => {
     }
 
     try {
+        if (!event.body) {
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: 'Request body is required' })
+            };
+        }
+
         const formData = JSON.parse(event.body);
         const { name, email, phone, service, message } = formData;
+
+        if (!name || !email) {
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: 'Name and email are required' })
+            };
+        }
 
         if (!process.env.RESEND_API_KEY) {
             console.error('RESEND_API_KEY is not set');
             return {
                 statusCode: 500,
-                body: JSON.stringify({ error: 'Email service not configured' })
+                headers,
+                body: JSON.stringify({ 
+                    error: 'Email service not configured',
+                    message: 'RESEND_API_KEY environment variable is missing. Please configure it in Netlify site settings.'
+                })
             };
         }
 
@@ -41,8 +61,10 @@ const handler = async (event) => {
         const phoneText = phone || 'Niet opgegeven';
         const messageText = message || 'Geen bericht';
 
+        const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+        
         const emailToOwner = {
-            from: 'Débeauty Contactformulier <noreply@debeauty.be>',
+            from: fromEmail,
             to: 'info@debeauty.be',
             subject: `Nieuw contactformulier bericht van ${name}`,
             html: `
@@ -57,7 +79,7 @@ const handler = async (event) => {
         };
 
         const emailToUser = {
-            from: 'Débeauty <noreply@debeauty.be>',
+            from: fromEmail,
             to: email,
             subject: 'Bedankt voor je bericht - Débeauty',
             html: `
@@ -91,9 +113,22 @@ const handler = async (event) => {
         });
 
         if (!resendResponse.ok) {
-            const errorData = await resendResponse.json();
+            let errorData;
+            try {
+                errorData = await resendResponse.json();
+            } catch (e) {
+                errorData = { message: await resendResponse.text() };
+            }
             console.error('Resend API error:', errorData);
-            throw new Error('Failed to send email to owner');
+            return {
+                statusCode: 500,
+                headers,
+                body: JSON.stringify({ 
+                    error: 'Failed to send email to owner',
+                    details: errorData.message || 'Unknown Resend API error',
+                    resendError: errorData
+                })
+            };
         }
 
         const confirmationResponse = await fetch('https://api.resend.com/emails', {
@@ -106,7 +141,13 @@ const handler = async (event) => {
         });
 
         if (!confirmationResponse.ok) {
-            console.error('Failed to send confirmation email, but owner email was sent');
+            let errorData;
+            try {
+                errorData = await confirmationResponse.json();
+            } catch (e) {
+                errorData = { message: await confirmationResponse.text() };
+            }
+            console.error('Failed to send confirmation email:', errorData);
         }
 
         return {
