@@ -95,7 +95,20 @@
 
                 <div class="contact__form-container">
                     <h2 class="contact__subtitle">Maak een afspraak</h2>
-                    <form class="contact__form">
+                    <form class="contact__form" name="contact" netlify netlify-honeypot="bot-field" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p class="form__hidden">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        
+                        <div class="form__feedback form__feedback--success" id="form-success" style="display: none;">
+                            <p>Bedankt! Je bericht is verzonden. We nemen zo snel mogelijk contact met je op.</p>
+                        </div>
+                        
+                        <div class="form__feedback form__feedback--error" id="form-error" style="display: none;">
+                            <p>Er is een fout opgetreden. Probeer het later opnieuw of neem direct contact op via info@debeauty.be</p>
+                        </div>
+                        
                         <div class="form__group">
                             <label for="name" class="form__label">Naam</label>
                             <input type="text" id="name" name="name" class="form__input" required>
@@ -129,7 +142,7 @@
                             <textarea id="message" name="message" class="form__textarea" rows="4"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn--primary">Verstuur bericht</button>
+                        <button type="submit" class="btn btn--primary" id="submit-btn">Verstuur bericht</button>
                     </form>
                 </div>
             </div>
