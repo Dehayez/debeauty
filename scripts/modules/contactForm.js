@@ -12,15 +12,18 @@ export function initContactForm() {
                        window.location.hostname === '';
 
     form.addEventListener('submit', (e) => {
-        if (isLocalhost) {
-            e.preventDefault();
-            console.log('Localhost detected - simulating form submission');
-            
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Verzenden...';
-            }
+        e.preventDefault();
+        
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Verzenden...';
+        }
 
+        if (successMessage) successMessage.style.display = 'none';
+        if (errorMessage) errorMessage.style.display = 'none';
+
+        if (isLocalhost) {
+            console.log('Localhost detected - simulating form submission');
             setTimeout(() => {
                 if (successMessage) {
                     successMessage.style.display = 'block';
@@ -37,14 +40,6 @@ export function initContactForm() {
             }, 1000);
             return;
         }
-
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Verzenden...';
-        }
-
-        if (successMessage) successMessage.style.display = 'none';
-        if (errorMessage) errorMessage.style.display = 'none';
 
         const formData = new FormData(form);
         
