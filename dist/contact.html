@@ -27,26 +27,26 @@
             </div>
             <ul class="navbar__links">
                 <li class="navbar__left-links">
-                    <a href="index.html">Home</a>
-                    <a href="diensten.html">Diensten</a>
+                    <a href="/">Home</a>
+                    <a href="/diensten">Diensten</a>
                 </li>
                 <li class="navbar__logo-container">
-                    <a href="index.html" class="navbar__logo-link">
+                    <a href="/" class="navbar__logo-link">
                         <img id="navbar__logo" class="navbar__logo" src="/assets/logo.png" alt="débeauty">
                     </a>
                 </li>
                 <li class="navbar__right-links">
-                    <a href="over.html">Over mij</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="/over">Over mij</a>
+                    <a href="/contact">Contact</a>
                 </li>
             </ul>
         </nav>
         <div class="navbar__mobile-overlay">
             <div class="navbar__mobile-menu">
-                <a href="index.html" class="navbar__mobile-link">Home</a>
-                <a href="diensten.html" class="navbar__mobile-link">Diensten</a>
-                <a href="over.html" class="navbar__mobile-link">Over mij</a>
-                <a href="contact.html" class="navbar__mobile-link">Contact</a>
+                <a href="/" class="navbar__mobile-link">Home</a>
+                <a href="/diensten" class="navbar__mobile-link">Diensten</a>
+                <a href="/over" class="navbar__mobile-link">Over mij</a>
+                <a href="/contact" class="navbar__mobile-link">Contact</a>
             </div>
         </div>
     </header>
@@ -87,7 +87,7 @@
                     <div class="contact__item">
                         <div class="contact__icon">🕒</div>
                         <div class="contact__details">
-                            <h3 class="contact__label">Op afspraak</h3>
+                            <h3 class="contact__label">Openingsuren</h3>
                             <p class="contact__text">Op afspraak</p>
                         </div>
                     </div>
@@ -95,7 +95,20 @@
 
                 <div class="contact__form-container">
                     <h2 class="contact__subtitle">Maak een afspraak</h2>
-                    <form class="contact__form">
+                    <form class="contact__form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <input type="hidden" name="_to" value="info@debeauty.be">
+                        <input type="hidden" name="_subject" value="Nieuw contactformulier bericht">
+                        <input type="hidden" name="_replyto" value="" id="reply-to">
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <div class="form__feedback form__feedback--success" id="form-success" style="display: none;">
+                            <p>Bedankt! Je bericht is verzonden. We nemen zo snel mogelijk contact met je op.</p>
+                        </div>
+                        
+                        <div class="form__feedback form__feedback--error" id="form-error" style="display: none;">
+                            <p>Er is een fout opgetreden. Probeer het later opnieuw of neem direct contact op via info@debeauty.be</p>
+                        </div>
+                        
                         <div class="form__group">
                             <label for="name" class="form__label">Naam</label>
                             <input type="text" id="name" name="name" class="form__input" required>
@@ -129,14 +142,14 @@
                             <textarea id="message" name="message" class="form__textarea" rows="4"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn--primary">Verstuur bericht</button>
+                        <button type="submit" class="btn btn--primary" id="submit-btn">Verstuur bericht</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2025 Débeauty</p>
+        <p>&copy; 2026 Débeauty</p>
         <p class="footer__credit">Website door <a href="https://www.dehayez.com/" target="_blank" rel="noopener">Dehayez</a></p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
