@@ -1,9 +1,8 @@
 // Contact form submission handler using EmailJS
-// Configureer deze waarden na het aanmaken van je EmailJS account
 const EMAILJS_CONFIG = {
-    serviceId: 'YOUR_SERVICE_ID',
-    templateId: 'YOUR_TEMPLATE_ID',
-    publicKey: 'YOUR_PUBLIC_KEY'
+    serviceId: 'service_88l3s3v',
+    templateId: 'template_ayqvav8',
+    publicKey: 'k6HMkDKekmzM7ZggJ'
 };
 
 export function initContactForm() {
