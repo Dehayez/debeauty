@@ -1,5 +1,94 @@
+// Parse price string and extract numeric values
+function parsePrice(priceText) {
+    const cleaned = priceText.replace(/[€\s]/g, '');
+    const prices = [];
+    
+    // Handle range prices (e.g., "70-90" or "12-18")
+    if (cleaned.includes('-')) {
+        const [min, max] = cleaned.split('-').map(p => parseFloat(p));
+        if (!isNaN(min)) prices.push(min);
+        if (!isNaN(max)) prices.push(max);
+    } else {
+        const price = parseFloat(cleaned);
+        if (!isNaN(price)) prices.push(price);
+    }
+    
+    return prices;
+}
+
+// Calculate min and max prices for a service category
+function calculatePriceRange(categoryTitle) {
+    const allCategories = document.querySelectorAll('.service-category');
+    let targetCategory = null;
+    
+    allCategories.forEach(category => {
+        const title = category.querySelector('.service-category__title');
+        if (title && title.textContent.trim().toLowerCase() === categoryTitle.toLowerCase()) {
+            targetCategory = category;
+        }
+    });
+    
+    if (!targetCategory) return null;
+    
+    const items = targetCategory.querySelectorAll('.service-item');
+    const allPrices = [];
+    
+    items.forEach(item => {
+        const priceElement = item.querySelector('.service-item__price');
+        if (priceElement) {
+            const prices = parsePrice(priceElement.textContent);
+            allPrices.push(...prices);
+        }
+    });
+    
+    if (allPrices.length === 0) return null;
+    
+    const min = Math.min(...allPrices);
+    const max = Math.max(...allPrices);
+    
+    return { min, max };
+}
+
+// Update service card prices
+function updateServiceCardPrices() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    const categoryMap = {
+        'gelaatsbehandeling': 'Gelaatsbehandeling',
+        'manicure': 'Manicure',
+        'pedicure': 'Pedicure',
+        'massage': 'Massage',
+        'epilatie': 'Epilatie',
+        'make-up': 'Make-up'
+    };
+    
+    serviceCards.forEach(card => {
+        const titleElement = card.querySelector('.service-card__title');
+        if (!titleElement) return;
+        
+        const cardTitle = titleElement.textContent.trim().toLowerCase();
+        const categoryName = categoryMap[cardTitle];
+        
+        if (categoryName) {
+            const priceRange = calculatePriceRange(categoryName);
+            const priceElement = card.querySelector('.service-card__price');
+            
+            if (priceRange && priceElement) {
+                if (priceRange.min === priceRange.max) {
+                    priceElement.textContent = `€${priceRange.min}`;
+                } else {
+                    priceElement.textContent = `€${priceRange.min} - €${priceRange.max}`;
+                }
+            }
+        }
+    });
+}
+
 // Service card click functionality with smooth scroll
 export function initServiceCards() {
+    // Update prices from pricelist
+    updateServiceCardPrices();
+    
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('click', () => {
             const title = card.querySelector('.service-card__title').textContent.toLowerCase();
