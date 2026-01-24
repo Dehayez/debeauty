@@ -1,20 +1,27 @@
 # EmailJS Setup Instructions
 
-EmailJS is **FREE** (200 emails/month) and works on Netlify's free plan - no Pro subscription needed!
+EmailJS is **FREE** (200 emails/month) en werkt met je bestaande Nomeo email account via SMTP!
 
-## Quick Setup (5 minutes):
+## Snelle Setup (5 minuten):
 
-1. **Create a free account** at [https://www.emailjs.com](https://www.emailjs.com)
+1. **Maak een gratis account** op [https://www.emailjs.com](https://www.emailjs.com)
 
-2. **Create an Email Service**:
-   - Go to **Email Services** → **Add New Service**
-   - Choose **Gmail** (or any email provider)
-   - Connect your email account (info@debeauty.be)
-   - Copy the **Service ID**
+2. **Maak een Email Service aan**:
+   - Ga naar **Email Services** → **Add New Service**
+   - Kies **Custom SMTP** (of "Other" → "Custom SMTP")
+   - Vul je Nomeo SMTP gegevens in:
+     - **SMTP Server**: Vraag dit op bij Nomeo (meestal iets zoals `smtp.nomeo.be` of `mail.nomeo.be`)
+     - **SMTP Port**: Meestal `587` (TLS) of `465` (SSL)
+     - **SMTP Username**: Je volledige email adres (`info@debeauty.be`)
+     - **SMTP Password**: Je email wachtwoord
+     - **From Name**: Débeauty
+     - **From Email**: `info@debeauty.be`
+   - Test de verbinding
+   - Kopieer de **Service ID** (bijv. `service_xxxxx`)
 
-3. **Create an Email Template**:
-   - Go to **Email Templates** → **Create New Template**
-   - Use this template:
+3. **Maak een Email Template aan**:
+   - Ga naar **Email Templates** → **Create New Template**
+   - Gebruik dit template:
    
    ```
    Subject: Nieuw contactformulier bericht van {{from_name}}
@@ -29,36 +36,41 @@ EmailJS is **FREE** (200 emails/month) and works on Netlify's free plan - no Pro
    Bericht:
    {{message}}
    ```
-   - Set **To Email** to: `info@debeauty.be`
-   - Copy the **Template ID**
+   - Zet **To Email** op: `info@debeauty.be`
+   - Kopieer de **Template ID** (bijv. `template_xxxxx`)
 
-4. **Get your Public Key**:
-   - Go to **Account** → **General**
-   - Copy your **Public Key**
+4. **Haal je Public Key op**:
+   - Ga naar **Account** → **General**
+   - Kopieer je **Public Key**
 
-5. **Update the code**:
+5. **Update de code**:
    - Open `scripts/modules/contactForm.js`
-   - Replace these lines (around line 50-52):
+   - Vervang deze regels (rond regel 4-6):
      ```javascript
-     const serviceId = 'YOUR_SERVICE_ID';
-     const templateId = 'YOUR_TEMPLATE_ID';
-     const publicKey = 'YOUR_PUBLIC_KEY';
+     const EMAILJS_CONFIG = {
+         serviceId: 'YOUR_SERVICE_ID',
+         templateId: 'YOUR_TEMPLATE_ID',
+         publicKey: 'YOUR_PUBLIC_KEY'
+     };
      ```
-   - With your actual values:
+   - Met je echte waarden:
      ```javascript
-     const serviceId = 'service_xxxxx';
-     const templateId = 'template_xxxxx';
-     const publicKey = 'xxxxxxxxxxxxx';
+     const EMAILJS_CONFIG = {
+         serviceId: 'service_xxxxx',
+         templateId: 'template_xxxxx',
+         publicKey: 'xxxxxxxxxxxxx'
+     };
      ```
 
-6. **Deploy and test!**
+6. **Deploy en test!**
 
-That's it! The form will now send emails to info@debeauty.be for free, no Netlify Pro plan needed.
+Klaar! Het formulier stuurt nu emails naar info@debeauty.be via je Nomeo account.
 
-## Free Tier Limits:
-- 200 emails per month (free)
-- No credit card required
-- Works on any hosting (Netlify free plan included)
+## Gratis Tier:
+- 200 emails per maand (gratis)
+- Geen creditcard nodig
+- Werkt op elke hosting (inclusief Netlify free plan)
+- Gebruikt je bestaande Nomeo email account
 
 
 

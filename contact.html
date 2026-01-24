@@ -95,11 +95,7 @@
 
                 <div class="contact__form-container">
                     <h2 class="contact__subtitle">Maak een afspraak</h2>
-                    <form class="contact__form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                        <input type="hidden" name="_to" value="info@debeauty.be">
-                        <input type="hidden" name="_subject" value="Nieuw contactformulier bericht">
-                        <input type="hidden" name="_replyto" value="" id="reply-to">
-                        <input type="text" name="_gotcha" style="display:none">
+                    <form class="contact__form" id="contact-form">
                         
                         <div class="form__feedback form__feedback--success" id="form-success" style="display: none;">
                             <p>Bedankt! Je bericht is verzonden. We nemen zo snel mogelijk contact met je op.</p>
@@ -153,6 +149,7 @@
         <p class="footer__credit">Website door <a href="https://www.dehayez.com/" target="_blank" rel="noopener">Dehayez</a></p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="module" src="scripts/main.js"></script>
 </body>
 </html> 
