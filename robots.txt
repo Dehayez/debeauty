@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.debeauty.com/sitemap.xml
+Sitemap: https://www.debeauty.be/sitemap.xml
