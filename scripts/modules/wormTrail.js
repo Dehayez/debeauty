@@ -45,14 +45,21 @@ export function initWormTrail() {
     });
     
     function animate() {
-        pos1.x += (actualMousePos.x - pos1.x) * 0.25;
-        pos1.y += (actualMousePos.y - pos1.y) * 0.25;
-        pos2.x += (pos1.x - pos2.x) * 0.35;
-        pos2.y += (pos1.y - pos2.y) * 0.35;
+        // Ease-in-out: move faster when far away, slower as it approaches
+        const dist1 = Math.sqrt((actualMousePos.x - pos1.x) ** 2 + (actualMousePos.y - pos1.y) ** 2);
+        const ease1 = 0.06 + 0.1 * Math.min(1, dist1 / 200);
+        pos1.x += (actualMousePos.x - pos1.x) * ease1;
+        pos1.y += (actualMousePos.y - pos1.y) * ease1;
+
+        const dist2 = Math.sqrt((pos1.x - pos2.x) ** 2 + (pos1.y - pos2.y) ** 2);
+        const ease2 = 0.05 + 0.11 * Math.min(1, dist2 / 200);
+        pos2.x += (pos1.x - pos2.x) * ease2;
+        pos2.y += (pos1.y - pos2.y) * ease2;
+
         const distanceX = pos2.x - pos3.x;
         const distanceY = pos2.y - pos3.y;
         const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-        const accelerationFactor = Math.min(0.55, 0.3 + (distance / 250));
+        const accelerationFactor = 0.04 + 0.12 * Math.min(1, distance / 200);
         pos3.x += distanceX * accelerationFactor;
         pos3.y += distanceY * accelerationFactor;
         gsap.set(dot1, { x: pos1.x - RADIUS, y: pos1.y - RADIUS });
