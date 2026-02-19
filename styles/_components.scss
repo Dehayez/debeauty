@@ -78,6 +78,20 @@
     padding: 0 1rem;
     position: relative;
 
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba($primary-color, 0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+    }
+
     &__logo {
         display: none;
         max-width: 80px;
@@ -132,10 +146,15 @@
 .feature {
     text-align: center;
     padding: 2rem 1rem;
-    
+
     &__icon {
-        font-size: 3rem;
         margin-bottom: 1rem;
+        color: $primary-color-dark;
+
+        svg {
+            width: 48px;
+            height: 48px;
+        }
     }
     
     &__title {
@@ -189,10 +208,15 @@
     }
     
     &__icon {
-        font-size: 2.5rem;
         margin-bottom: 1rem;
+        color: $primary-color-dark;
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
     }
-    
+
     &__title {
         font-family: "ParisAvenue", sans-serif;
         font-size: 1.3rem;
@@ -200,13 +224,13 @@
         margin-bottom: 1rem;
         color: $black-color;
     }
-    
+
     &__description {
         color: $primary-color-dark;
         margin-bottom: 1.5rem;
         line-height: 1.6;
     }
-    
+
     &__price {
         font-size: 1.1rem;
         font-weight: 500;
@@ -269,8 +293,13 @@
     padding: 2rem 1rem;
     
     &__avatar {
-        font-size: 4rem;
         margin-bottom: 1rem;
+        color: $primary-color-dark;
+
+        svg {
+            width: 80px;
+            height: 80px;
+        }
     }
     
     &__name {
@@ -319,10 +348,15 @@
 .value {
     text-align: center;
     padding: 1.5rem 1rem;
-    
+
     &__icon {
-        font-size: 2.5rem;
         margin-bottom: 1rem;
+        color: $primary-color-dark;
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
     }
     
     &__title {
@@ -371,9 +405,14 @@
     }
     
     &__icon {
-        font-size: 1.5rem;
         margin-right: 1rem;
-        margin-top: 0.2rem;
+        color: $primary-color-dark;
+        flex-shrink: 0;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
     }
     
     &__details {
@@ -384,13 +423,26 @@
         font-family: "ParisAvenue", sans-serif;
         font-size: 1rem;
         font-weight: 500;
+        margin-top: 2px;
         margin-bottom: 0.5rem;
         color: $black-color;
+        line-height: 24px;
     }
     
     &__text {
         color: $primary-color-dark;
         line-height: 1.5;
+
+        a {
+            color: $primary-color-dark;
+            text-decoration: none;
+            border-bottom: 1px solid rgba($primary-color-dark, 0.3);
+            transition: border-color 0.3s ease;
+
+            &:hover {
+                border-color: $primary-color-dark;
+            }
+        }
     }
 }
 
@@ -448,6 +500,7 @@
         font-family: inherit;
         box-sizing: border-box;
         transition: border-color 0.3s ease;
+        background: transparent;
         
         &:focus {
             outline: none;
@@ -527,6 +580,28 @@
         font-size: 0.95rem;
         white-space: nowrap;
         margin-left: 1rem;
+    }
+}
+
+// Services CTA section
+.services-cta {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    &__title {
+        font-family: "ParisAvenue", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        color: $black-color;
+    }
+
+    &__text {
+        font-size: 1.1rem;
+        color: $primary-color-dark;
+        margin-bottom: 2rem;
     }
 }
 

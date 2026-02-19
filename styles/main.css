@@ -24,6 +24,19 @@ a, button, input, textarea, select, .btn, .service-card, [role=button] {
   cursor: none !important;
 }
 
+/* Focus-visible styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role=button]:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid #5B9279;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 main {
   flex: 1 0 auto;
   width: 100%;
@@ -490,6 +503,19 @@ a:hover ~ .cursor-circle {
   padding: 0 1rem;
   position: relative;
 }
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(166, 217, 198, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
 .hero__logo {
   display: none;
   max-width: 80px;
@@ -540,8 +566,12 @@ a:hover ~ .cursor-circle {
   padding: 2rem 1rem;
 }
 .feature__icon {
-  font-size: 3rem;
   margin-bottom: 1rem;
+  color: #5B9279;
+}
+.feature__icon svg {
+  width: 48px;
+  height: 48px;
 }
 .feature__title {
   font-family: "ParisAvenue", sans-serif;
@@ -588,8 +618,12 @@ a:hover ~ .cursor-circle {
   transform: translateY(-2px);
 }
 .service-card__icon {
-  font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #5B9279;
+}
+.service-card__icon svg {
+  width: 40px;
+  height: 40px;
 }
 .service-card__title {
   font-family: "ParisAvenue", sans-serif;
@@ -656,8 +690,12 @@ a:hover ~ .cursor-circle {
   padding: 2rem 1rem;
 }
 .team-member__avatar {
-  font-size: 4rem;
   margin-bottom: 1rem;
+  color: #5B9279;
+}
+.team-member__avatar svg {
+  width: 80px;
+  height: 80px;
 }
 .team-member__name {
   font-family: "ParisAvenue", sans-serif;
@@ -701,8 +739,12 @@ a:hover ~ .cursor-circle {
   padding: 1.5rem 1rem;
 }
 .value__icon {
-  font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #5B9279;
+}
+.value__icon svg {
+  width: 40px;
+  height: 40px;
 }
 .value__title {
   font-family: "ParisAvenue", sans-serif;
@@ -745,9 +787,13 @@ a:hover ~ .cursor-circle {
   margin-bottom: 2rem;
 }
 .contact__icon {
-  font-size: 1.5rem;
   margin-right: 1rem;
-  margin-top: 0.2rem;
+  color: #5B9279;
+  flex-shrink: 0;
+}
+.contact__icon svg {
+  width: 24px;
+  height: 24px;
 }
 .contact__details {
   flex: 1;
@@ -756,12 +802,23 @@ a:hover ~ .cursor-circle {
   font-family: "ParisAvenue", sans-serif;
   font-size: 1rem;
   font-weight: 500;
+  margin-top: 2px;
   margin-bottom: 0.5rem;
   color: #12130F;
+  line-height: 24px;
 }
 .contact__text {
   color: #5B9279;
   line-height: 1.5;
+}
+.contact__text a {
+  color: #5B9279;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(91, 146, 121, 0.3);
+  transition: border-color 0.3s ease;
+}
+.contact__text a:hover {
+  border-color: #5B9279;
 }
 
 .contact__form .form__hidden {
@@ -809,6 +866,7 @@ a:hover ~ .cursor-circle {
   font-family: inherit;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
+  background: transparent;
 }
 .contact__form .form__input:focus,
 .contact__form .form__select:focus,
@@ -880,6 +938,25 @@ a:hover ~ .cursor-circle {
   font-size: 0.95rem;
   white-space: nowrap;
   margin-left: 1rem;
+}
+
+.services-cta {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.services-cta__title {
+  font-family: "ParisAvenue", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #12130F;
+}
+.services-cta__text {
+  font-size: 1.1rem;
+  color: #5B9279;
+  margin-bottom: 2rem;
 }
 
 .btn {

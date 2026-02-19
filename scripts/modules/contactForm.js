@@ -49,7 +49,6 @@ export function initContactForm() {
         };
 
         if (isLocalhost) {
-            console.log('Localhost detected - simulating form submission');
             setTimeout(() => {
                 if (successMessage) {
                     successMessage.style.display = 'block';

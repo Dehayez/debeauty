@@ -45,14 +45,14 @@ export function initWormTrail() {
     });
     
     function animate() {
-        pos1.x += (actualMousePos.x - pos1.x) * 0.07;
-        pos1.y += (actualMousePos.y - pos1.y) * 0.07;
-        pos2.x += (pos1.x - pos2.x) * 0.15;
-        pos2.y += (pos1.y - pos2.y) * 0.15;
+        pos1.x += (actualMousePos.x - pos1.x) * 0.25;
+        pos1.y += (actualMousePos.y - pos1.y) * 0.25;
+        pos2.x += (pos1.x - pos2.x) * 0.35;
+        pos2.y += (pos1.y - pos2.y) * 0.35;
         const distanceX = pos2.x - pos3.x;
         const distanceY = pos2.y - pos3.y;
         const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-        const accelerationFactor = Math.min(0.35, 0.1 + (distance / 450));
+        const accelerationFactor = Math.min(0.55, 0.3 + (distance / 250));
         pos3.x += distanceX * accelerationFactor;
         pos3.y += distanceY * accelerationFactor;
         gsap.set(dot1, { x: pos1.x - RADIUS, y: pos1.y - RADIUS });
