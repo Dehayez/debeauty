@@ -9,7 +9,7 @@
     background: rgba($white-color, 0.5);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    transition: height 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: height 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
     overflow: hidden;
     height: auto;
     width: 100%;
@@ -17,10 +17,14 @@
     &.menu-open {
         height: 100vh !important;
     }
+
+    @media (max-width: 768px) {
+        background: $white-color;
+    }
 }
 
 .navbar {
-    padding: 1rem 6rem;
+    padding: 0 6rem;
     position: relative;
     display: flex;
     align-items: center;
@@ -130,7 +134,7 @@
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
         align-items: center;
         justify-content: center;
         background: transparent;
@@ -164,6 +168,22 @@
         padding: 1rem 2rem;
         border-radius: 8px;
         z-index: 10000;
+        opacity: 0;
+        transform: translateY(15px);
+
+        .navbar__mobile-overlay.active & {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        color 0.3s ease,
+                        background-color 0.3s ease;
+
+            &:nth-child(1) { transition-delay: 0.15s; }
+            &:nth-child(2) { transition-delay: 0.25s; }
+            &:nth-child(3) { transition-delay: 0.35s; }
+            &:nth-child(4) { transition-delay: 0.45s; }
+        }
 
         &:hover {
             color: $primary-color-dark;

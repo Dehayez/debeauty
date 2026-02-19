@@ -31,7 +31,7 @@ export function initHamburgerMenu() {
             // Reset height after animation completes
             setTimeout(() => {
                 header.style.height = '';
-            }, 400);
+            }, 700);
         });
     }
 
