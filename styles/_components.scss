@@ -548,10 +548,19 @@
         align-items: center;
         gap: 0.5rem;
     }
-    
+
     &__icon {
-        font-size: 1.5rem;
-        display: inline-block;
+        color: $primary-color-dark;
+        opacity: 0.5;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
     
     &__items {

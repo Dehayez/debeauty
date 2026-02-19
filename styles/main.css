@@ -911,8 +911,16 @@ a:hover ~ .cursor-circle {
   gap: 0.5rem;
 }
 .service-category__icon {
-  font-size: 1.5rem;
-  display: inline-block;
+  color: #5B9279;
+  opacity: 0.5;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-category__icon svg {
+  width: 20px;
+  height: 20px;
 }
 .service-category__items {
   display: flex;
