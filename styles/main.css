@@ -1109,8 +1109,8 @@ a:hover ~ .cursor-circle {
 }
 .btn--primary:hover {
   background: rgba(166, 217, 198, 0.15);
-  border-color: #70c2a4;
-  color: #47735f;
+  border-color: rgb(112.3897637795, 194.1102362205, 163.6653543307);
+  color: rgb(71.417721519, 114.582278481, 94.9620253165);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(166, 217, 198, 0.4);
 }
