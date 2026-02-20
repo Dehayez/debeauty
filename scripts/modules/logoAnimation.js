@@ -64,45 +64,56 @@ export function initLogoAnimation() {
         sessionStorage.setItem('logoAnimationPlayed', 'true');
     }
 
+    function animateLogo(targetTransform, onComplete) {
+        // Ensure logo starts from its natural position
+        overlayLogo.style.transform = 'translate(0, 0) scale(1)';
+        overlayLogo.style.transition = 'none';
+
+        // Double rAF to guarantee the start state is painted
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                // Now set the transition and target
+                overlayLogo.style.transition = 'transform 0.65s cubic-bezier(0.77,0,0.175,1), opacity 0.35s';
+                overlayLogo.style.transform = targetTransform;
+
+                setTimeout(() => {
+                    overlay.style.opacity = '0';
+                    showContent();
+                }, 500);
+
+                setTimeout(() => {
+                    if (onComplete) onComplete();
+                    overlay.remove();
+                }, 900);
+            });
+        });
+    }
+
     function animateMobile() {
-        // Mobile: simple fade out without navbar animation
-        overlayLogo.style.transition = 'opacity 0.5s ease';
-        overlayLogo.style.opacity = '0';
+        const overlayRect = overlayLogo.getBoundingClientRect();
+        const targetY = 35;
+        const targetSize = 50;
+        const scale = targetSize / overlayLogo.offsetWidth;
+        const deltaX = (window.innerWidth / 2) - (overlayRect.left + overlayRect.width / 2);
+        const deltaY = targetY - (overlayRect.top + overlayRect.height / 2);
 
-        setTimeout(() => {
-            overlay.style.opacity = '0';
-            showContent();
-        }, 300);
-
-        setTimeout(() => {
-            overlay.remove();
-        }, 700);
+        animateLogo(`translate(${deltaX}px, ${deltaY}px) scale(${scale})`);
     }
 
     function animateDesktop() {
-        // Desktop: animate logo to navbar position
         const overlayRect = overlayLogo.getBoundingClientRect();
         const navbarRect = navbarLogo.getBoundingClientRect();
         const deltaX = navbarRect.left + navbarRect.width / 2 - (overlayRect.left + overlayRect.width / 2);
         const deltaY = navbarRect.top + navbarRect.height / 2 - (overlayRect.top + overlayRect.height / 2);
         const scale = navbarLogo.offsetWidth / overlayLogo.offsetWidth;
 
-        overlayLogo.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
-        overlayLogo.style.transition = 'transform 0.65s cubic-bezier(0.77,0,0.175,1), opacity 0.35s';
-
-        setTimeout(() => {
-            overlay.style.opacity = '0';
-            showContent();
-        }, 500);
-
-        setTimeout(() => {
+        animateLogo(`translate(${deltaX}px, ${deltaY}px) scale(${scale})`, () => {
             overlayLogo.style.transform = '';
             overlayLogo.style.transition = '';
             navbarLogo.replaceWith(overlayLogo);
             overlayLogo.id = 'navbar__logo';
             overlayLogo.className = 'navbar__logo';
             overlayLogo.removeAttribute('style');
-            overlay.remove();
-        }, 900);
+        });
     }
 }
