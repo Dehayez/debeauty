@@ -822,6 +822,16 @@ a:hover ~ .cursor-circle {
     gap: 2rem;
   }
 }
+@media (min-width: 769px) {
+  .contact__form-container {
+    order: 2;
+  }
+}
+@media (min-width: 769px) {
+  .contact__info {
+    order: 1;
+  }
+}
 .contact__subtitle {
   font-family: "ParisAvenue", sans-serif;
   font-size: 1.5rem;
