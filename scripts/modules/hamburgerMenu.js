@@ -17,22 +17,23 @@ export function initHamburgerMenu() {
         mobileOverlay.classList.remove('active');
         document.body.style.overflow = '';
 
-        // Get the natural height of the navbar
-        const navbar = header.querySelector('.navbar');
-        const naturalHeight = navbar ? navbar.offsetHeight : 60;
+        // Set starting state: full opacity
+        header.classList.add('menu-closing');
+        header.style.opacity = '1';
 
-        // Set current height first, then animate down
-        header.style.height = `${header.offsetHeight}px`;
+        // Force reflow so the browser registers opacity: 1
+        header.offsetHeight;
 
-        requestAnimationFrame(() => {
+        // Now animate to 0
+        header.style.opacity = '0';
+
+        // Clean up after fade completes
+        setTimeout(() => {
             header.classList.remove('menu-open');
-            header.style.height = `${naturalHeight}px`;
-
-            // Reset height after animation completes
-            setTimeout(() => {
-                header.style.height = '';
-            }, 700);
-        });
+            header.classList.remove('menu-closing');
+            header.style.opacity = '';
+            header.style.height = '';
+        }, 500);
     }
 
     function openMenu() {
