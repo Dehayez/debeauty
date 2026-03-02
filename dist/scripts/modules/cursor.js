@@ -1,8 +1,8 @@
 // Custom cursor functionality
 export function initCursor() {
-    // Skip custom cursor on touch devices
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
+    // Use matchMedia for reliable detection — works correctly on hybrid devices
+    const hasMousePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!hasMousePointer) return;
 
     // Remove existing cursor elements if they exist (for page navigation)
     const existingCursor = document.querySelector('.custom-cursor');
@@ -18,10 +18,21 @@ export function initCursor() {
     cursorCircle.className = 'cursor-circle';
     document.body.appendChild(cursorCircle);
 
+    // Verify the custom cursor is actually rendering before hiding the default one
+    const cursorStyles = window.getComputedStyle(customCursor);
+    if (cursorStyles.display === 'none' || cursorStyles.visibility === 'hidden' || !document.body.contains(customCursor)) {
+        customCursor.remove();
+        cursorCircle.remove();
+        return;
+    }
+
+    // Custom cursor is confirmed working — hide default cursor via CSS
+    document.body.classList.add('has-custom-cursor');
+
     // Restore last cursor position
     const lastX = sessionStorage.getItem('lastCursorX') || window.innerWidth / 2;
     const lastY = sessionStorage.getItem('lastCursorY') || window.innerHeight / 2;
-    
+
     // Set initial position
     customCursor.style.left = lastX + 'px';
     customCursor.style.top = lastY + 'px';
@@ -37,11 +48,11 @@ export function initCursor() {
         cursorCircle.style.top = e.clientY + 'px';
     });
 
-    // Cursor appearance on interactive elements
-    const interactiveElements = document.querySelectorAll('a, .service-card, .btn, button, input, textarea, select');
-    
-    interactiveElements.forEach(element => {
-        element.addEventListener('mouseenter', () => {
+    // Use event delegation so dynamically added elements also get the hover effect
+    const interactiveSelector = 'a, .service-card, .btn, button, input, textarea, select';
+
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.closest(interactiveSelector)) {
             customCursor.style.width = '6px';
             customCursor.style.height = '6px';
             cursorCircle.style.transition = 'none';
@@ -52,13 +63,16 @@ export function initCursor() {
             cursorCircle.style.width = '30px';
             cursorCircle.style.height = '30px';
             cursorCircle.style.opacity = '1';
-        });
-        element.addEventListener('mouseleave', () => {
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        if (e.target.closest(interactiveSelector)) {
             customCursor.style.width = '10px';
             customCursor.style.height = '10px';
             cursorCircle.style.width = '10px';
             cursorCircle.style.height = '10px';
             cursorCircle.style.opacity = '0';
-        });
+        }
     });
 }

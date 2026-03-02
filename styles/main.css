@@ -22,11 +22,18 @@ body {
   font-weight: 300;
   position: relative;
   z-index: 1;
-  cursor: none; /* Hide default cursor */
 }
 
-/* Ensure cursor is always none for all interactive elements */
-a, button, input, textarea, select, .btn, .service-card, [role=button] {
+/* Hide default cursor only when custom cursor is active (JS adds .has-custom-cursor) */
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor input,
+.has-custom-cursor textarea,
+.has-custom-cursor select,
+.has-custom-cursor .btn,
+.has-custom-cursor .service-card,
+.has-custom-cursor [role=button] {
   cursor: none !important;
 }
 
@@ -429,23 +436,6 @@ footer .footer__credit a {
   }
 }
 
-a {
-  cursor: none;
-}
-a:hover ~ .custom-cursor {
-  width: 6px;
-  height: 6px;
-}
-a:hover ~ .cursor-circle {
-  width: 30px;
-  height: 30px;
-  opacity: 1;
-}
-@media (hover: none) and (pointer: coarse) {
-  a {
-    cursor: auto;
-  }
-}
 
 .cursor-worm__dot {
   width: 39px;
@@ -650,7 +640,6 @@ a:hover ~ .cursor-circle {
   padding: 2rem;
   text-align: center;
   transition: all 0.3s ease;
-  cursor: none;
   position: relative;
   z-index: 1;
   transform-origin: center bottom;
@@ -1102,7 +1091,6 @@ a:hover ~ .cursor-circle {
   font-weight: 500;
   text-decoration: none;
   text-align: center;
-  cursor: none;
   transition: all 0.3s ease;
   background: rgba(166, 217, 198, 0.08);
   color: #5B9279;

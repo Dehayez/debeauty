@@ -1,8 +1,11 @@
 // Worm trail animation
 export function initWormTrail() {
-    // Skip worm trail on touch devices
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
+    // Use matchMedia for reliable detection — works correctly on hybrid devices
+    const hasMousePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!hasMousePointer) return;
+
+    // Guard against missing GSAP
+    if (typeof gsap === 'undefined') return;
 
     const dot1 = document.createElement('div');
     dot1.className = 'cursor-worm__dot';
@@ -19,22 +22,22 @@ export function initWormTrail() {
     const connector2 = document.createElement('div');
     connector2.className = 'cursor-worm__connector';
     document.body.appendChild(connector2);
-    
+
     const RADIUS = 19.5;
     const lastX = sessionStorage.getItem('lastCursorX') || window.innerWidth / 2;
     const lastY = sessionStorage.getItem('lastCursorY') || window.innerHeight / 2;
-    
+
     let pos1 = { x: parseInt(lastX), y: parseInt(lastY) };
     let pos2 = { x: parseInt(lastX), y: parseInt(lastY) };
     let pos3 = { x: parseInt(lastX), y: parseInt(lastY) };
     let actualMousePos = { x: parseInt(lastX), y: parseInt(lastY) };
     const mousePositions = [];
     const positionHistoryLength = 5;
-    
+
     for (let i = 0; i < positionHistoryLength; i++) {
         mousePositions.push({ x: parseInt(lastX), y: parseInt(lastY) });
     }
-    
+
     document.addEventListener('mousemove', (e) => {
         actualMousePos.x = e.clientX;
         actualMousePos.y = e.clientY;
@@ -43,7 +46,7 @@ export function initWormTrail() {
             mousePositions.pop();
         }
     });
-    
+
     function animate() {
         // Ease-in-out: move faster when far away, slower as it approaches
         const dist1 = Math.sqrt((actualMousePos.x - pos1.x) ** 2 + (actualMousePos.y - pos1.y) ** 2);
@@ -69,7 +72,7 @@ export function initWormTrail() {
         connectDots(dot2, dot3, connector2);
         requestAnimationFrame(animate);
     }
-    
+
     function connectDots(dotA, dotB, connector) {
         const a = dotA.getBoundingClientRect();
         const b = dotB.getBoundingClientRect();
@@ -93,6 +96,6 @@ export function initWormTrail() {
             rotate: angle,
         });
     }
-    
+
     animate();
 }
