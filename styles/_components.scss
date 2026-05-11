@@ -819,7 +819,7 @@
     background: rgba($primary-color, 0.08);
     color: $primary-color-dark;
     box-shadow: 0 2px 8px rgba($primary-color, 0.25);
-    
+
     &--primary {
         &:hover {
             background: rgba($primary-color, 0.15);
@@ -828,7 +828,7 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba($primary-color, 0.4);
         }
-        
+
         &:active {
             transform: translateY(-1px);
             background: rgba($primary-color, 0.12);
