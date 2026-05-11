@@ -58,7 +58,23 @@
                 }
             }
 
+            .navbar__swirl-fill {
+                fill: $white-color;
+            }
+
+            .navbar__swirl-stroke {
+                stroke: $white-color;
+            }
+
             &.is-scrolled {
+                .navbar__swirl-fill {
+                    fill: $primary-color-dark;
+                }
+
+                .navbar__swirl-stroke {
+                    stroke: $primary-color-dark;
+                }
+
                 background: rgba($white-color, 0.5);
                 backdrop-filter: saturate(180%) blur(20px);
                 -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -306,12 +322,13 @@
   &-fill {
     fill: $primary-color-dark;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, fill 0.3s ease;
   }
   &-stroke {
     stroke: $primary-color-dark;
     stroke-width: 3.4;
     fill: none;
+    transition: stroke 0.3s ease;
   }
 
   &--mobile {

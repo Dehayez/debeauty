@@ -176,10 +176,22 @@ footer .footer__credit a {
   .page-home .header .navbar__links li a:hover, .page-home .header .navbar__links li a.navbar__link--active {
     color: #FFFFFF;
   }
+  .page-home .header .navbar__swirl-fill {
+    fill: #FFFFFF;
+  }
+  .page-home .header .navbar__swirl-stroke {
+    stroke: #FFFFFF;
+  }
   .page-home .header.is-scrolled {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+  .page-home .header.is-scrolled .navbar__swirl-fill {
+    fill: #5B9279;
+  }
+  .page-home .header.is-scrolled .navbar__swirl-stroke {
+    stroke: #5B9279;
   }
   .page-home .header.is-scrolled .navbar__links li a {
     color: #A6D9C6;
@@ -399,12 +411,13 @@ footer .footer__credit a {
 .navbar__swirl-fill {
   fill: #5B9279;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, fill 0.3s ease;
 }
 .navbar__swirl-stroke {
   stroke: #5B9279;
   stroke-width: 3.4;
   fill: none;
+  transition: stroke 0.3s ease;
 }
 .navbar__swirl--mobile {
   bottom: -5px;
