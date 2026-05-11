@@ -9,7 +9,9 @@
     background: rgba($white-color, 0.5);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    transition: height 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: height 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+                background-color 0.3s ease,
+                backdrop-filter 0.3s ease;
     overflow: hidden;
     height: auto;
     width: 100%;
@@ -53,6 +55,24 @@
                 &:hover,
                 &.navbar__link--active {
                     color: $white-color;
+                }
+            }
+
+            &.is-scrolled {
+                background: rgba($white-color, 0.5);
+                backdrop-filter: saturate(180%) blur(20px);
+                -webkit-backdrop-filter: saturate(180%) blur(20px);
+
+                .navbar__links li a {
+                    color: $primary-color;
+
+                    &:hover {
+                        color: $primary-color-dark;
+                    }
+
+                    &.navbar__link--active {
+                        color: $primary-color-dark;
+                    }
                 }
             }
         }
