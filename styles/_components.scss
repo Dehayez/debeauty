@@ -151,13 +151,16 @@
         margin-top: 2rem;
 
         .btn {
-            background: rgba($white-color, 0.95);
-            border-color: $white-color;
-            color: $primary-color-dark;
+            background: rgba($white-color, 0.25);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-color: rgba($white-color, 0.6);
+            color: $white-color;
 
             &:hover {
-                background: $white-color;
-                color: color.adjust($primary-color-dark, $lightness: -10%);
+                background: rgba($white-color, 0.4);
+                border-color: $white-color;
+                color: $white-color;
             }
         }
     }
