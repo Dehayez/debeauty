@@ -155,7 +155,7 @@
     }
     </script>
 </head>
-<body>
+<body class="page-home">
     <div id="overlay" class="overlay">
         <img id="overlay__logo" class="overlay__logo" src="/assets/logo.png" alt="débeauty">
     </div>
@@ -194,6 +194,11 @@
     </header>
     <main style="opacity:0; pointer-events:none;">
         <section class="hero">
+            <img
+                class="hero__bg"
+                src="https://images.unsplash.com/photo-1745068003858-897105131224?auto=format&fit=crop&w=2000&q=80"
+                alt=""
+                aria-hidden="true">
             <div class="hero__content">
                 <h1 class="hero__title">Welkom bij Débeauty</h1>
                 <p class="hero__subtitle">Dé plek voor verzorging en ontspanning in <strong>Baasrode</strong></p>
@@ -225,11 +230,27 @@
 
         <section class="cta-duo">
             <div class="cta-duo__card">
+                <figure class="cta-duo__image">
+                    <img
+                        src="https://images.unsplash.com/photo-1532009877282-3340270e0529?auto=format&fit=crop&w=900&q=80"
+                        alt="Zen stapeling van zwarte stenen."
+                        width="900"
+                        height="600"
+                        loading="lazy">
+                </figure>
                 <h2 class="cta-duo__title">Maak een afspraak</h2>
                 <p class="cta-duo__text">Klaar voor een moment van ontspanning? Neem gerust contact op.</p>
                 <a href="/contact" class="btn btn--primary">Contact</a>
             </div>
             <div class="cta-duo__card cta-duo__card--minimal">
+                <figure class="cta-duo__image">
+                    <img
+                        src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80"
+                        alt="Sereen behandelmoment in het schoonheidsinstituut."
+                        width="900"
+                        height="600"
+                        loading="lazy">
+                </figure>
                 <h2 class="cta-duo__title">Maak kennis</h2>
                 <p class="cta-duo__text">Meer dan 20 jaar ervaring in schoonheidsverzorging. Ontdek mijn verhaal.</p>
                 <a href="/over" class="cta-duo__link">Over mij</a>

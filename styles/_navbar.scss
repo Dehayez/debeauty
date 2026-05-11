@@ -42,6 +42,23 @@
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
     }
+
+    @media (min-width: 769px) {
+        .page-home & {
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+
+            .navbar__links li a {
+                color: $white-color;
+
+                &:hover,
+                &.navbar__link--active {
+                    color: $white-color;
+                }
+            }
+        }
+    }
 }
 
 .navbar {
