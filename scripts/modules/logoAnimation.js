@@ -54,6 +54,11 @@ export function initLogoAnimation() {
 
         header.style.opacity = '1';
         header.style.pointerEvents = 'auto';
+        // Reveal content underneath so the overlay's blur has something to blur
+        main.style.opacity = '1';
+        if (footer) footer.style.opacity = '1';
+        // Hide the navbar logo until the splash logo lands on its position
+        navbarLogo.style.opacity = '0';
 
         if (isMobile) {
             animateMobile();
@@ -69,22 +74,37 @@ export function initLogoAnimation() {
         overlayLogo.style.transform = 'translate(0, 0) scale(1)';
         overlayLogo.style.transition = 'none';
 
+        // Fade the overlay background (not the logo) for the full duration of the logo motion
+        const overlayBgEl = overlay.querySelector('.overlay__bg') || (() => {
+            const bg = document.createElement('div');
+            bg.className = 'overlay__bg';
+            overlay.prepend(bg);
+            return bg;
+        })();
+        overlayBgEl.style.transition = 'opacity 1.2s cubic-bezier(0.77,0,0.175,1)';
+
         // Double rAF to guarantee the start state is painted
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 // Now set the transition and target
-                overlayLogo.style.transition = 'transform 0.65s cubic-bezier(0.77,0,0.175,1), opacity 0.35s';
+                overlayLogo.style.transition = 'transform 1.2s cubic-bezier(0.77,0,0.175,1), opacity 0.6s';
                 overlayLogo.style.transform = targetTransform;
+
+                // Background fades out over the same 1.2s as the logo motion
+                overlayBgEl.style.opacity = '0';
 
                 setTimeout(() => {
                     overlay.style.opacity = '0';
                     showContent();
-                }, 500);
+                }, 1000);
 
                 setTimeout(() => {
                     if (onComplete) onComplete();
+                }, 1200);
+
+                setTimeout(() => {
                     overlay.remove();
-                }, 900);
+                }, 1600);
             });
         });
     }
@@ -97,7 +117,9 @@ export function initLogoAnimation() {
         const deltaX = (window.innerWidth / 2) - (overlayRect.left + overlayRect.width / 2);
         const deltaY = targetY - (overlayRect.top + overlayRect.height / 2);
 
-        animateLogo(`translate(${deltaX}px, ${deltaY}px) scale(${scale})`);
+        animateLogo(`translate(${deltaX}px, ${deltaY}px) scale(${scale})`, () => {
+            navbarLogo.style.opacity = '';
+        });
     }
 
     function animateDesktop() {

@@ -23,12 +23,22 @@
 .overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: $white-color;
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: opacity 0.7s cubic-bezier(0.77,0,0.175,1);
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        background: rgba($white-color, 0.55);
+        backdrop-filter: saturate(160%) blur(28px);
+        -webkit-backdrop-filter: saturate(160%) blur(28px);
+        opacity: 1;
+        will-change: opacity;
+        z-index: -1;
+    }
 
     &__logo {
         max-width: 180px;
@@ -36,6 +46,7 @@
         height: auto;
         transition: transform 1s cubic-bezier(0.77,0,0.175,1), opacity 0.5s;
         will-change: transform, opacity;
+        position: relative;
     }
 }
 
