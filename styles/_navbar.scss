@@ -16,12 +16,10 @@
 
     &.menu-open {
         height: 100vh !important;
-        background: $white-color;
     }
 
     &.menu-closing {
         height: 100vh !important;
-        background: $white-color;
         transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 
         .navbar__mobile-link {
@@ -175,7 +173,9 @@
         transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
         align-items: center;
         justify-content: center;
-        background: transparent;
+        background: rgba($white-color, 0.6);
+        backdrop-filter: saturate(180%) blur(24px);
+        -webkit-backdrop-filter: saturate(180%) blur(24px);
 
         &.active {
             opacity: 1;

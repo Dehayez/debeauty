@@ -142,11 +142,9 @@ footer .footer__credit a {
 }
 .header.menu-open {
   height: 100vh !important;
-  background: #FFFFFF;
 }
 .header.menu-closing {
   height: 100vh !important;
-  background: #FFFFFF;
   transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .header.menu-closing .navbar__mobile-link {
@@ -279,7 +277,9 @@ footer .footer__credit a {
   transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
   align-items: center;
   justify-content: center;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
 }
 .navbar__mobile-overlay.active {
   opacity: 1;
