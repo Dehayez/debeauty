@@ -1,0 +1,55 @@
+@use 'variables' as *;
+
+// Pre-paint hiding for GSAP reveals. The .has-scroll-reveal flag is added
+// inline in <head> before first paint, so elements are hidden before the
+// JS modules attach their gsap.set/gsap.to. This avoids any FOUC.
+// All animation logic lives in JS; if JS fails, the no-js fallback removes
+// the flag after a short timeout so the page is never permanently hidden.
+
+html.has-scroll-reveal {
+    .hero__title .reveal-word > span,
+    .page-header__title .reveal-word > span,
+    .about__subtitle .reveal-word > span,
+    .values__title .reveal-word > span,
+    .detailed-services__title .reveal-word > span,
+    .services-cta__title .reveal-word > span,
+    .cta-duo__title .reveal-word > span,
+    .page-header__subtitle,
+    .about__text,
+    .services-cta__text,
+    .services-cta .btn,
+    .contact__subtitle,
+    .contact__form,
+    .contact__info,
+    .features__grid > *,
+    .values__grid > *,
+    .team__grid > *,
+    .cta-duo > *,
+    .service-category__items > *,
+    .services__grid .service-card,
+    .service-category__title,
+    .service-category .service-item {
+        opacity: 0;
+    }
+}
+
+.reveal-word {
+    display: inline-block;
+
+    > span {
+        display: inline-block;
+        will-change: opacity, transform;
+    }
+}
+
+.hero__bg,
+.hero__content {
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.has-scroll-reveal * {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

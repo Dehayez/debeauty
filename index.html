@@ -47,6 +47,16 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles/main.css">
+    <script>
+      // Hide reveal targets before first paint; safety-net removes the
+      // flag after 4s in case GSAP fails so nothing stays invisible.
+      document.documentElement.classList.add('has-scroll-reveal');
+      setTimeout(function(){
+        if(!window.__scrollRevealReady){
+          document.documentElement.classList.remove('has-scroll-reveal');
+        }
+      }, 4000);
+    </script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -263,6 +273,7 @@
         <p class="footer__credit">Website door <a href="https://www.dehayez.com/" target="_blank" rel="noopener">Dehayez</a></p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

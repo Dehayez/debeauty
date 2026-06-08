@@ -1251,4 +1251,49 @@ a:hover ~ .cursor-circle {
   box-shadow: 0 4px 15px rgba(166, 217, 198, 0.2);
 }
 
+html.has-scroll-reveal .hero__title .reveal-word > span,
+html.has-scroll-reveal .page-header__title .reveal-word > span,
+html.has-scroll-reveal .about__subtitle .reveal-word > span,
+html.has-scroll-reveal .values__title .reveal-word > span,
+html.has-scroll-reveal .detailed-services__title .reveal-word > span,
+html.has-scroll-reveal .services-cta__title .reveal-word > span,
+html.has-scroll-reveal .cta-duo__title .reveal-word > span,
+html.has-scroll-reveal .page-header__subtitle,
+html.has-scroll-reveal .about__text,
+html.has-scroll-reveal .services-cta__text,
+html.has-scroll-reveal .services-cta .btn,
+html.has-scroll-reveal .contact__subtitle,
+html.has-scroll-reveal .contact__form,
+html.has-scroll-reveal .contact__info,
+html.has-scroll-reveal .features__grid > *,
+html.has-scroll-reveal .values__grid > *,
+html.has-scroll-reveal .team__grid > *,
+html.has-scroll-reveal .cta-duo > *,
+html.has-scroll-reveal .service-category__items > *,
+html.has-scroll-reveal .services__grid .service-card,
+html.has-scroll-reveal .service-category__title,
+html.has-scroll-reveal .service-category .service-item {
+  opacity: 0;
+}
+
+.reveal-word {
+  display: inline-block;
+}
+.reveal-word > span {
+  display: inline-block;
+  will-change: opacity, transform;
+}
+
+.hero__bg,
+.hero__content {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.has-scroll-reveal * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */
