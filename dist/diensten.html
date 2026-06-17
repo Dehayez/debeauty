@@ -3,19 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diensten - Débeauty</title>
-    
+    <meta name="google-site-verification" content="NPH1u4JJthTRJmBAV1fpmtgW4SnXhhU01nqG_puBPlc" />
+    <title>Diensten & Prijzen - Débeauty Baasrode | Gezichtsbehandeling, Massage, Manicure</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Bekijk alle behandelingen en prijzen van Débeauty in Baasrode. Gezichtsbehandeling vanaf €54, manicure €20, pedicure €25, massage €25-60, epilatie vanaf €7 en make-up vanaf €20.">
+    <link rel="canonical" href="https://www.debeauty.be/diensten" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Diensten & Prijzen - Débeauty Baasrode">
+    <meta property="og:description" content="Bekijk alle behandelingen en prijzen. Gezichtsbehandeling, manicure, pedicure, massage, epilatie en make-up.">
+    <meta property="og:image" content="https://www.debeauty.be/assets/sharing-image.png">
+    <meta property="og:url" content="https://www.debeauty.be/diensten">
+    <meta property="og:locale" content="nl_BE">
+    <meta property="og:site_name" content="Débeauty">
+
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    
+
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link rel="shortcut icon" href="/assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/site.webmanifest" />
     <link rel="stylesheet" href="styles/main.css">
+    <script>
+      document.documentElement.classList.add('has-scroll-reveal');
+      setTimeout(function(){
+        if(!window.__scrollRevealReady){
+          document.documentElement.classList.remove('has-scroll-reveal');
+        }
+      }, 4000);
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Diensten en Prijzen - Débeauty",
+        "description": "Alle schoonheidsbehandelingen en prijzen van Débeauty in Baasrode",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Service",
+                    "name": "Gelaatsbehandeling",
+                    "description": "Basis en intensieve gelaatsbehandeling Clinicare",
+                    "offers": {
+                        "@type": "AggregateOffer",
+                        "lowPrice": "54",
+                        "highPrice": "90",
+                        "priceCurrency": "EUR"
+                    },
+                    "provider": {
+                        "@type": "BeautySalon",
+                        "name": "Débeauty",
+                        "url": "https://www.debeauty.be"
+                    }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "Service",
+                    "name": "Manicure",
+                    "description": "Nagels vijlen, nagelriemen zuiver maken, handcrème, lakken, gelish",
+                    "offers": {
+                        "@type": "AggregateOffer",
+                        "lowPrice": "6",
+                        "highPrice": "20",
+                        "priceCurrency": "EUR"
+                    }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@type": "Service",
+                    "name": "Pedicure",
+                    "description": "Onderhoudspedicure, intensieve pedicure, lakken, gelish",
+                    "offers": {
+                        "@type": "AggregateOffer",
+                        "lowPrice": "6",
+                        "highPrice": "30",
+                        "priceCurrency": "EUR"
+                    }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                    "@type": "Service",
+                    "name": "Epilatie",
+                    "description": "Wenkbrauwen, bovenlip, gelaat, benen, bikini, oksels",
+                    "offers": {
+                        "@type": "AggregateOffer",
+                        "lowPrice": "7",
+                        "highPrice": "32",
+                        "priceCurrency": "EUR"
+                    }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 5,
+                "item": {
+                    "@type": "Service",
+                    "name": "Massage",
+                    "description": "Volledige lichaamsmassage en rug- en nekmassage",
+                    "offers": {
+                        "@type": "AggregateOffer",
+                        "lowPrice": "25",
+                        "highPrice": "60",
+                        "priceCurrency": "EUR"
+                    }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 6,
+                "item": {
+                    "@type": "Service",
+                    "name": "Make-up",
+                    "description": "Dag make-up en avond make-up",
+                    "offers": {
+                        "@type": "AggregateOffer",
+                        "lowPrice": "20",
+                        "highPrice": "25",
+                        "priceCurrency": "EUR"
+                    }
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -59,45 +190,57 @@
         <section class="services">
             <div class="services__grid">
                 <div class="service-card">
-                    <div class="service-card__icon">✨</div>
-                    <h3 class="service-card__title">Gelaatsbehandeling</h3>
+                    <figure class="service-card__image">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Gezichtsbehandeling in het schoonheidsinstituut." width="600" height="400" loading="lazy">
+                    </figure>
+                    <div class="service-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg></div>
+                    <h2 class="service-card__title">Gelaatsbehandeling</h2>
                     <p class="service-card__description">Aangepast aan ieders huidtype</p>
-                    <div class="service-card__price">Basis: €54<br>Intensief: €70-90</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-card__icon">💅</div>
-                    <h3 class="service-card__title">Manicure</h3>
-                    <p class="service-card__description">Nagels vijlen, nagelriemen zuiver maken, handcrème</p>
-                    <div class="service-card__price">€20</div>
+                    <figure class="service-card__image">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80" alt="Verzorgde nagels tijdens een manicure." width="600" height="400" loading="lazy">
+                    </figure>
+                    <div class="service-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m14.45 13.39 5.05-4.694C20.196 8 21 6.85 21 5.75a2.75 2.75 0 0 0-4.797-1.837.276.276 0 0 1-.406 0A2.75 2.75 0 0 0 11 5.75c0 1.2.802 2.248 1.5 2.946L16 11.95"/><path d="m2 15 6 6"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a1 1 0 0 0-2.75-2.91"/></svg></div>
+                    <h2 class="service-card__title">Manicure</h2>
+                    <p class="service-card__description">Nagels vijlen, nagelriemen zuiver maken, handcrème aanbrengen</p>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-card__icon">🦶</div>
-                    <h3 class="service-card__title">Pedicure</h3>
+                    <figure class="service-card__image">
+                        <img src="https://plus.unsplash.com/premium_photo-1661868958612-7d52c5fb9647?auto=format&fit=crop&w=600&q=80" alt="Vrouwelijke voeten in een voetbad met bloemen tijdens een pedicure." width="600" height="400" loading="lazy">
+                    </figure>
+                    <div class="service-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg></div>
+                    <h2 class="service-card__title">Pedicure</h2>
                     <p class="service-card__description">Onderhoudspedicure binnen de 6 weken</p>
-                    <div class="service-card__price">€25</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-card__icon">🧘</div>
-                    <h3 class="service-card__title">Massage</h3>
+                    <figure class="service-card__image">
+                        <img src="https://images.unsplash.com/photo-1712638932314-e2b185ca0930?auto=format&fit=crop&w=600&q=80" alt="Ontspannende lichaamsmassage met handdoek." width="600" height="400" loading="lazy">
+                    </figure>
+                    <div class="service-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg></div>
+                    <h2 class="service-card__title">Massage</h2>
                     <p class="service-card__description">Volledige lichaamsmassage</p>
-                    <div class="service-card__price">€60</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-card__icon">💆</div>
-                    <h3 class="service-card__title">Epilatie</h3>
+                    <figure class="service-card__image">
+                        <img src="https://plus.unsplash.com/premium_photo-1726804940914-2cd542e5d7e6?auto=format&fit=crop&w=600&q=80" alt="Beenontharing in een schoonheidsinstituut." width="600" height="400" loading="lazy">
+                    </figure>
+                    <div class="service-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></div>
+                    <h2 class="service-card__title">Epilatie</h2>
                     <p class="service-card__description">Wenkbrauwen, bovenlip, benen, bikini, oksels</p>
-                    <div class="service-card__price">Vanaf €7</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-card__icon">💄</div>
-                    <h3 class="service-card__title">Make-up</h3>
+                    <figure class="service-card__image">
+                        <img src="https://images.unsplash.com/photo-1551392505-f4056032826e?auto=format&fit=crop&w=600&q=80" alt="Vrouw met roze en gouden oogschaduw make-up." width="600" height="400" loading="lazy">
+                    </figure>
+                    <div class="service-card__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg></div>
+                    <h2 class="service-card__title">Make-up</h2>
                     <p class="service-card__description">Dag en avond make-up</p>
-                    <div class="service-card__price">€20-25</div>
                 </div>
             </div>
         </section>
@@ -106,161 +249,143 @@
             <h2 class="detailed-services__title">Gedetailleerde Prijslijst</h2>
             
             <div class="service-category">
-                <h3 class="service-category__title">Gelaatsbehandeling</h3>
+                <h3 class="service-category__title"><span class="service-category__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg></span> Gelaatsbehandeling</h3>
                 <div class="service-category__items">
                     <div class="service-item">
                         <span class="service-item__name">Basis gelaatsbehandeling Clinicare</span>
-                        <span class="service-item__price">€54</span>
+                        <span class="service-item__price">54</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Intensieve gelaatsbehandeling Clinicare</span>
-                        <span class="service-item__price">€70-90</span>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-item__name">Masker refresh</span>
-                        <span class="service-item__price">€75</span>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-item__name">Masker pure</span>
-                        <span class="service-item__price">€72</span>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-item__name">Masker glow</span>
-                        <span class="service-item__price">€75</span>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-item__name">Masker Ime reverse</span>
-                        <span class="service-item__price">€80</span>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-item__name">Masker X3M pure pore</span>
-                        <span class="service-item__price">€75</span>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-item__name">Masker carboxytherapy</span>
-                        <span class="service-item__price">€90</span>
+                        <span class="service-item__price">70-90</span>
                     </div>
                 </div>
             </div>
 
             <div class="service-category">
-                <h3 class="service-category__title">Manicure</h3>
+                <h3 class="service-category__title"><span class="service-category__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m14.45 13.39 5.05-4.694C20.196 8 21 6.85 21 5.75a2.75 2.75 0 0 0-4.797-1.837.276.276 0 0 1-.406 0A2.75 2.75 0 0 0 11 5.75c0 1.2.802 2.248 1.5 2.946L16 11.95"/><path d="m2 15 6 6"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a1 1 0 0 0-2.75-2.91"/></svg></span> Manicure</h3>
                 <div class="service-category__items">
                     <div class="service-item">
-                        <span class="service-item__name">Nagels vijlen, nagelriemen zuiver maken, handcrème</span>
-                        <span class="service-item__price">€20</span>
+                        <span class="service-item__name">Nagels vijlen, nagelriemen zuiver maken, handcrème aanbrengen</span>
+                        <span class="service-item__price">20</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Knippen en vijlen van de nagels</span>
-                        <span class="service-item__price">€7</span>
+                        <span class="service-item__price">7</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Lakken</span>
-                        <span class="service-item__price">€6</span>
+                        <span class="service-item__price">6</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Gelish plaatsen</span>
-                        <span class="service-item__price">€15</span>
+                        <span class="service-item__price">15</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Verwijderen Gelish</span>
-                        <span class="service-item__price">€10</span>
+                        <span class="service-item__price">10</span>
                     </div>
                 </div>
             </div>
 
             <div class="service-category">
-                <h3 class="service-category__title">Pedicure</h3>
+                <h3 class="service-category__title"><span class="service-category__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg></span> Pedicure</h3>
                 <div class="service-category__items">
                     <div class="service-item">
                         <span class="service-item__name">Onderhoudspedicure binnen de 6 weken</span>
-                        <span class="service-item__price">€25</span>
+                        <span class="service-item__price">25</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Intensieve pedicure</span>
-                        <span class="service-item__price">€30</span>
+                        <span class="service-item__price">30</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Lakken</span>
-                        <span class="service-item__price">€6</span>
+                        <span class="service-item__price">6</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Gelish plaatsen</span>
-                        <span class="service-item__price">€15</span>
+                        <span class="service-item__price">15</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Verwijderen Gelish</span>
-                        <span class="service-item__price">€10</span>
+                        <span class="service-item__price">10</span>
                     </div>
                 </div>
             </div>
 
             <div class="service-category">
-                <h3 class="service-category__title">Epilatie</h3>
+                <h3 class="service-category__title"><span class="service-category__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg></span> Epilatie</h3>
                 <div class="service-category__items">
                     <div class="service-item">
                         <span class="service-item__name">Wenkbrauwen onderhoud</span>
-                        <span class="service-item__price">€7</span>
+                        <span class="service-item__price">7</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Wenkbrauwen vorm geven</span>
-                        <span class="service-item__price">€10</span>
+                        <span class="service-item__price">10</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Bovenlip</span>
-                        <span class="service-item__price">€7</span>
+                        <span class="service-item__price">7</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Gelaat</span>
-                        <span class="service-item__price">€15</span>
+                        <span class="service-item__price">15</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Onderbenen</span>
-                        <span class="service-item__price">€20</span>
+                        <span class="service-item__price">20</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Benen volledig</span>
-                        <span class="service-item__price">€32</span>
+                        <span class="service-item__price">32</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Bikini</span>
-                        <span class="service-item__price">€12-18</span>
+                        <span class="service-item__price">12-18</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Oksels</span>
-                        <span class="service-item__price">€12</span>
+                        <span class="service-item__price">12</span>
                     </div>
                 </div>
             </div>
 
             <div class="service-category">
-                <h3 class="service-category__title">Massage</h3>
+                <h3 class="service-category__title"><span class="service-category__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg></span> Massage</h3>
                 <div class="service-category__items">
                     <div class="service-item">
                         <span class="service-item__name">Volledige lichaamsmassage</span>
-                        <span class="service-item__price">€60</span>
+                        <span class="service-item__price">60</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Rug- en nekmassage</span>
-                        <span class="service-item__price">€25</span>
+                        <span class="service-item__price">25</span>
                     </div>
                 </div>
             </div>
 
             <div class="service-category">
-                <h3 class="service-category__title">Make-up</h3>
+                <h3 class="service-category__title"><span class="service-category__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg></span> Make-up</h3>
                 <div class="service-category__items">
                     <div class="service-item">
                         <span class="service-item__name">Dag make-up</span>
-                        <span class="service-item__price">€20</span>
+                        <span class="service-item__price">20</span>
                     </div>
                     <div class="service-item">
                         <span class="service-item__name">Avond make-up</span>
-                        <span class="service-item__price">€25</span>
+                        <span class="service-item__price">25</span>
                     </div>
                 </div>
             </div>
 
+        </section>
+
+        <section class="services-cta">
+            <h2 class="services-cta__title">Interesse?</h2>
+            <p class="services-cta__text">Neem gerust contact op om een afspraak te maken</p>
+            <a href="/contact" class="btn btn--primary">Maak een afspraak</a>
         </section>
     </main>
     <footer>
@@ -268,6 +393,7 @@
         <p class="footer__credit">Website door <a href="https://www.dehayez.com/" target="_blank" rel="noopener">Dehayez</a></p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script type="module" src="scripts/main.js"></script>
 </body>
 </html> 

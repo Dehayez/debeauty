@@ -874,13 +874,35 @@ a:hover ~ .cursor-circle {
   text-align: center;
   padding: 2rem 1rem;
 }
-.team-member__avatar {
-  margin-bottom: 1rem;
-  color: #5B9279;
+.team-member__photo {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(91, 146, 121, 0.15);
 }
-.team-member__avatar svg {
-  width: 80px;
-  height: 80px;
+.team-member__photo img {
+  filter: saturate(0.84) contrast(1.05) brightness(1.02);
+}
+.team-member__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(155deg, rgba(219, 240, 232, 0.55) 0%, rgba(91, 146, 121, 0.28) 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.team-member__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 38% 24%;
+  transform: scale(1.5);
+  display: block;
 }
 .team-member__name {
   font-family: "ParisAvenue", sans-serif;
@@ -1177,11 +1199,25 @@ a:hover ~ .cursor-circle {
   border-color: transparent;
 }
 .cta-duo__image {
+  position: relative;
   margin: 0 0 1.5rem;
   aspect-ratio: 3/2;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 8px 28px rgba(91, 146, 121, 0.15);
+}
+.cta-duo__image img {
+  filter: saturate(0.84) contrast(1.05) brightness(1.02);
+}
+.cta-duo__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(155deg, rgba(219, 240, 232, 0.55) 0%, rgba(91, 146, 121, 0.28) 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  pointer-events: none;
 }
 .cta-duo__image img {
   width: 100%;
@@ -1192,6 +1228,13 @@ a:hover ~ .cursor-circle {
 }
 .cta-duo__image:hover img {
   transform: scale(1.04);
+}
+.cta-duo__image--outside img {
+  object-position: center 0%;
+  transform: scale(1.12);
+}
+.cta-duo__image--outside:hover img {
+  transform: scale(1.17);
 }
 .cta-duo__link {
   color: #5B9279;

@@ -3,19 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Débeauty</title>
-    
+    <meta name="google-site-verification" content="NPH1u4JJthTRJmBAV1fpmtgW4SnXhhU01nqG_puBPlc" />
+    <title>Contact & Afspraak - Débeauty Baasrode | Bookmolenstraat 124, 9200 Baasrode</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Maak een afspraak bij Débeauty in Baasrode. Bookmolenstraat 124, 9200 Baasrode. Bel 0479 69 87 09 of mail info@debeauty.be. Op afspraak.">
+    <link rel="canonical" href="https://www.debeauty.be/contact" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact & Afspraak - Débeauty Baasrode">
+    <meta property="og:description" content="Maak een afspraak bij Débeauty. Bookmolenstraat 124, 9200 Baasrode. Bel 0479 69 87 09.">
+    <meta property="og:image" content="https://www.debeauty.be/assets/sharing-image.png">
+    <meta property="og:url" content="https://www.debeauty.be/contact">
+    <meta property="og:locale" content="nl_BE">
+    <meta property="og:site_name" content="Débeauty">
+
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    
+
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link rel="shortcut icon" href="/assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/site.webmanifest" />
     <link rel="stylesheet" href="styles/main.css">
+    <script>
+      document.documentElement.classList.add('has-scroll-reveal');
+      setTimeout(function(){
+        if(!window.__scrollRevealReady){
+          document.documentElement.classList.remove('has-scroll-reveal');
+        }
+      }, 4000);
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Débeauty",
+        "telephone": "+32479698709",
+        "email": "info@debeauty.be",
+        "url": "https://www.debeauty.be/contact",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bookmolenstraat 124",
+            "addressLocality": "Baasrode",
+            "postalCode": "9200",
+            "addressCountry": "BE"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 51.0536,
+            "longitude": 4.1568
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "description": "Op afspraak"
+        }
+    }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -58,41 +110,6 @@
 
         <section class="contact">
             <div class="contact__grid">
-                <div class="contact__info">
-                    <h2 class="contact__subtitle">Bezoek Débeauty</h2>
-                    <div class="contact__item">
-                        <div class="contact__icon">📍</div>
-                        <div class="contact__details">
-                            <h3 class="contact__label">Adres</h3>
-                            <p class="contact__text">Bookmolenstraat 124<br>9200 Baasrode</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact__item">
-                        <div class="contact__icon">📞</div>
-                        <div class="contact__details">
-                            <h3 class="contact__label">Telefoon</h3>
-                            <p class="contact__text">0479 69 87 09</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact__item">
-                        <div class="contact__icon">✉️</div>
-                        <div class="contact__details">
-                            <h3 class="contact__label">Email</h3>
-                            <p class="contact__text">info@debeauty.be</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact__item">
-                        <div class="contact__icon">🕒</div>
-                        <div class="contact__details">
-                            <h3 class="contact__label">Openingsuren</h3>
-                            <p class="contact__text">Op afspraak</p>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="contact__form-container">
                     <h2 class="contact__subtitle">Maak een afspraak</h2>
                     <form class="contact__form" id="contact-form">
@@ -128,7 +145,7 @@
                                 <option value="manicure">Manicure</option>
                                 <option value="pedicure">Pedicure</option>
                                 <option value="massage">Massage</option>
-                                <option value="huidverzorging">Huidverzorging</option>
+                                <option value="epilatie">Epilatie</option>
                                 <option value="make-up">Make-up</option>
                             </select>
                         </div>
@@ -141,6 +158,41 @@
                         <button type="submit" class="btn btn--primary" id="submit-btn">Verstuur bericht</button>
                     </form>
                 </div>
+
+                <div class="contact__info">
+                    <h2 class="contact__subtitle">Bezoek Débeauty</h2>
+                    <div class="contact__item">
+                        <div class="contact__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div class="contact__details">
+                            <h3 class="contact__label">Adres</h3>
+                            <p class="contact__text">Bookmolenstraat 124<br>9200 Baasrode</p>
+                        </div>
+                    </div>
+
+                    <div class="contact__item">
+                        <div class="contact__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></div>
+                        <div class="contact__details">
+                            <h3 class="contact__label">Telefoon</h3>
+                            <p class="contact__text"><a href="tel:+32479698709">0479 69 87 09</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact__item">
+                        <div class="contact__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div>
+                        <div class="contact__details">
+                            <h3 class="contact__label">Email</h3>
+                            <p class="contact__text"><a href="mailto:info@debeauty.be">info@debeauty.be</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact__item">
+                        <div class="contact__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                        <div class="contact__details">
+                            <h3 class="contact__label">Openingsuren</h3>
+                            <p class="contact__text">Op afspraak</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -149,6 +201,7 @@
         <p class="footer__credit">Website door <a href="https://www.dehayez.com/" target="_blank" rel="noopener">Dehayez</a></p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="module" src="scripts/main.js"></script>
 </body>

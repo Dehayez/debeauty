@@ -75,9 +75,9 @@ function updateServiceCardPrices() {
             
             if (priceRange && priceElement) {
                 if (priceRange.min === priceRange.max) {
-                    priceElement.textContent = `€${priceRange.min}`;
+                    priceElement.textContent = `${priceRange.min}`;
                 } else {
-                    priceElement.textContent = `€${priceRange.min} - €${priceRange.max}`;
+                    priceElement.textContent = `${priceRange.min} - ${priceRange.max}`;
                 }
             }
         }
@@ -86,9 +86,6 @@ function updateServiceCardPrices() {
 
 // Service card click functionality with smooth scroll
 export function initServiceCards() {
-    // Update prices from pricelist
-    updateServiceCardPrices();
-    
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('click', () => {
             const title = card.querySelector('.service-card__title').textContent.toLowerCase();
