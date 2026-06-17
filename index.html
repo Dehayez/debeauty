@@ -205,16 +205,25 @@
     </header>
     <main style="opacity:0; pointer-events:none;">
         <section class="hero">
-            <img
-                class="hero__bg"
-                src="https://images.unsplash.com/photo-1745068003858-897105131224?auto=format&fit=crop&w=2000&q=80"
-                alt=""
-                aria-hidden="true">
+            <div class="hero__backdrop" aria-hidden="true">
+                <span class="hero__orb hero__orb--center"></span>
+                <span class="hero__orb hero__orb--left"></span>
+                <span class="hero__orb hero__orb--right"></span>
+            </div>
             <div class="hero__content">
+                <div class="hero__logo-slot">
+                    <span class="hero__logo-placeholder" aria-hidden="true"></span>
+                    <img id="hero__logo" class="hero__logo" src="/assets/logo.png" alt="">
+                </div>
                 <h1 class="hero__title">Welkom bij Débeauty</h1>
                 <p class="hero__subtitle">Dé plek voor verzorging en ontspanning in <strong>Baasrode</strong></p>
                 <div class="hero__cta">
                     <a href="/diensten" class="btn btn--primary">Ontdek mijn diensten</a>
+                </div>
+                <div class="hero__highlights">
+                    <a href="/diensten" class="hero__highlight">Schoonheidsbehandelingen</a>
+                    <a href="/diensten" class="hero__highlight">Nagelverzorging</a>
+                    <a href="/diensten" class="hero__highlight">Ontspanning</a>
                 </div>
             </div>
         </section>

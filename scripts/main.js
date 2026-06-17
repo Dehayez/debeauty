@@ -8,6 +8,7 @@ import { initNavbarSwirl } from './modules/navbarSwirl.js';
 import { initNavbarScroll } from './modules/navbarScroll.js';
 import { initContactForm } from './modules/contactForm.js';
 import { initHeroParallax } from './modules/heroParallax.js';
+import { initHeroLogoScroll } from './modules/heroLogoScroll.js';
 import { initTitleReveal } from './modules/titleReveal.js';
 import { initScrollReveal } from './modules/scrollReveal.js';
 import { initServiceCardsReveal } from './modules/serviceCardsReveal.js';
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
 
     initTitleReveal();
+    initHeroLogoScroll();
     initHeroParallax();
     initServiceCardsReveal();
     initScrollReveal();

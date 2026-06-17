@@ -1,4 +1,6 @@
 // Overlay logo animation
+import { getTransformToTarget, moveLogoToBody, pinLogoAtRect } from './logoFly.js';
+
 export function initLogoAnimation() {
     const overlay = document.getElementById('overlay');
     const overlayLogo = document.getElementById('overlay__logo');
@@ -6,32 +8,47 @@ export function initLogoAnimation() {
     const header = document.querySelector('header');
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
+    const hero = document.querySelector('.hero');
+    const heroLogoSlot = document.querySelector('.hero__logo-placeholder');
+    const heroLogo = document.getElementById('hero__logo');
+    const isHome = !!(hero && heroLogo && heroLogoSlot);
 
-    const MAX_LOAD_TIME = 4000; // Maximum wait time before forcing close
+    const MAX_LOAD_TIME = 4000;
 
     if (!overlay || !overlayLogo || !navbarLogo) return;
 
-    // Skip animation if already played this session
+    function notifyHeroLogoReady() {
+        document.body.classList.add('hero-logo-ready');
+        window.dispatchEvent(new CustomEvent('heroLogoReady'));
+    }
+
+    function hideNavbarLogo() {
+        navbarLogo.style.visibility = 'hidden';
+        navbarLogo.setAttribute('aria-hidden', 'true');
+    }
+
     if (sessionStorage.getItem('logoAnimationPlayed')) {
         showContent();
         overlay.remove();
+        if (isHome) {
+            hideNavbarLogo();
+            notifyHeroLogoReady();
+        }
         return;
     }
 
-    // Wait for fonts and logo image, with timeout fallback
     waitForAssets().then(startAnimation);
 
     function waitForAssets() {
         const fontsReady = document.fonts.ready;
-        const logoReady = overlayLogo.complete 
-            ? Promise.resolve() 
+        const logoReady = overlayLogo.complete
+            ? Promise.resolve()
             : new Promise(resolve => {
                 overlayLogo.onload = resolve;
                 overlayLogo.onerror = resolve;
             });
         const timeout = new Promise(resolve => setTimeout(resolve, MAX_LOAD_TIME));
 
-        // Wait for fonts + logo, but timeout if too slow
         return Promise.race([
             Promise.all([fontsReady, logoReady]),
             timeout
@@ -54,13 +71,14 @@ export function initLogoAnimation() {
 
         header.style.opacity = '1';
         header.style.pointerEvents = 'auto';
-        // Reveal content underneath so the overlay's blur has something to blur
         main.style.opacity = '1';
         if (footer) footer.style.opacity = '1';
-        // Hide the navbar logo until the splash logo lands on its position
         navbarLogo.style.opacity = '0';
 
-        if (isMobile) {
+        if (isHome) {
+            hideNavbarLogo();
+            animateToHero();
+        } else if (isMobile) {
             animateMobile();
         } else {
             animateDesktop();
@@ -70,11 +88,9 @@ export function initLogoAnimation() {
     }
 
     function animateLogo(targetTransform, onComplete) {
-        // Ensure logo starts from its natural position
         overlayLogo.style.transform = 'translate(0, 0) scale(1)';
         overlayLogo.style.transition = 'none';
 
-        // Fade the overlay background (not the logo) for the full duration of the logo motion
         const overlayBgEl = overlay.querySelector('.overlay__bg') || (() => {
             const bg = document.createElement('div');
             bg.className = 'overlay__bg';
@@ -83,14 +99,10 @@ export function initLogoAnimation() {
         })();
         overlayBgEl.style.transition = 'opacity 1.2s cubic-bezier(0.77,0,0.175,1)';
 
-        // Double rAF to guarantee the start state is painted
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                // Now set the transition and target
                 overlayLogo.style.transition = 'transform 1.2s cubic-bezier(0.77,0,0.175,1), opacity 0.6s';
                 overlayLogo.style.transform = targetTransform;
-
-                // Background fades out over the same 1.2s as the logo motion
                 overlayBgEl.style.opacity = '0';
 
                 setTimeout(() => {
@@ -109,6 +121,19 @@ export function initLogoAnimation() {
         });
     }
 
+    function animateToHero() {
+        animateLogo(getTransformToTarget(overlayLogo, heroLogoSlot), () => {
+            const landingRect = overlayLogo.getBoundingClientRect();
+
+            heroLogo.remove();
+            overlayLogo.id = 'hero__logo';
+            overlayLogo.className = 'hero__logo';
+            moveLogoToBody(overlayLogo);
+            pinLogoAtRect(overlayLogo, landingRect);
+            notifyHeroLogoReady();
+        });
+    }
+
     function animateMobile() {
         const overlayRect = overlayLogo.getBoundingClientRect();
         const targetY = 35;
@@ -123,13 +148,7 @@ export function initLogoAnimation() {
     }
 
     function animateDesktop() {
-        const overlayRect = overlayLogo.getBoundingClientRect();
-        const navbarRect = navbarLogo.getBoundingClientRect();
-        const deltaX = navbarRect.left + navbarRect.width / 2 - (overlayRect.left + overlayRect.width / 2);
-        const deltaY = navbarRect.top + navbarRect.height / 2 - (overlayRect.top + overlayRect.height / 2);
-        const scale = navbarLogo.offsetWidth / overlayLogo.offsetWidth;
-
-        animateLogo(`translate(${deltaX}px, ${deltaY}px) scale(${scale})`, () => {
+        animateLogo(getTransformToTarget(overlayLogo, navbarLogo), () => {
             overlayLogo.style.transform = '';
             overlayLogo.style.transition = '';
             navbarLogo.replaceWith(overlayLogo);

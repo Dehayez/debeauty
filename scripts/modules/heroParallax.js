@@ -7,21 +7,7 @@ export function initHeroParallax() {
     if (!setupGsap()) return;
     if (prefersReducedMotion()) return;
 
-    const bg = hero.querySelector('.hero__bg');
     const content = hero.querySelector('.hero__content');
-
-    if (bg) {
-        gsap.to(bg, {
-            yPercent: 18,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: hero,
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true,
-            },
-        });
-    }
 
     if (content) {
         gsap.to(content, {

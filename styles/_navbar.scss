@@ -42,57 +42,6 @@
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
     }
-
-    @media (min-width: 769px) {
-        .page-home & {
-            background: transparent;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-
-            .navbar__links li a {
-                color: $white-color;
-
-                &:hover,
-                &.navbar__link--active {
-                    color: $white-color;
-                }
-            }
-
-            .navbar__swirl-fill {
-                fill: $white-color;
-            }
-
-            .navbar__swirl-stroke {
-                stroke: $white-color;
-            }
-
-            &.is-scrolled {
-                .navbar__swirl-fill {
-                    fill: $primary-color-dark;
-                }
-
-                .navbar__swirl-stroke {
-                    stroke: $primary-color-dark;
-                }
-
-                background: rgba($white-color, 0.5);
-                backdrop-filter: saturate(180%) blur(20px);
-                -webkit-backdrop-filter: saturate(180%) blur(20px);
-
-                .navbar__links li a {
-                    color: $primary-color;
-
-                    &:hover {
-                        color: $primary-color-dark;
-                    }
-
-                    &.navbar__link--active {
-                        color: $primary-color-dark;
-                    }
-                }
-            }
-        }
-    }
 }
 
 .navbar {
