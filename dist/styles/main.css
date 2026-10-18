@@ -1158,11 +1158,7 @@ a:hover ~ .cursor-circle {
   font-size: 0.95rem;
 }
 .service-item__price {
-  font-weight: 300;
-  color: #5B9279;
-  font-size: 0.95rem;
-  white-space: nowrap;
-  margin-left: 1rem;
+  display: none;
 }
 
 .cta-duo {

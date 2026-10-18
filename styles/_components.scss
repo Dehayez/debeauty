@@ -790,12 +790,9 @@
         font-size: 0.95rem;
     }
     
+    // Hidden, not removed: serviceCards.js reads these to compute the card price ranges
     &__price {
-        font-weight: 300;
-        color: $primary-color-dark;
-        font-size: 0.95rem;
-        white-space: nowrap;
-        margin-left: 1rem;
+        display: none;
     }
 }
 
